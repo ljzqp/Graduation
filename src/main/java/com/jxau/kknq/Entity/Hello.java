@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class Hello {
 
+    // 测试提交
     @Id
     @GeneratedValue
     private int id;
