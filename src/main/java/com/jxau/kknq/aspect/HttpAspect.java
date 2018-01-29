@@ -1,4 +1,4 @@
-package com.jxau.kknq.Entity.aspect;
+package com.jxau.kknq.aspect;
 
 import groovy.util.logging.Commons;
 
@@ -18,13 +18,13 @@ public class HttpAspect {
 
 //    private final static Logger = LoggerFactory.getLogger(HttpAspect.class);
     //@Before注解是在执行指定方法前执行log()，addUser(..)指不管参数是什么都进行拦截
-    @Before("execution(public * com.jxau.kknq.Entity.controller.Rest.User.addUser(..))")
+    @Before("execution(public * com.jxau.kknq.Rest.CrudUsers.addUser(..))")
     public void before(){
         System.out.println("11111");
     }
 
     //
-    @Pointcut("execution(public * com.jxau.kknq.Entity.controller.Rest.User.addUser(..))")
+    @Pointcut("execution(public * com.jxau.kknq.Rest.CrudUsers.addUser(..))")
     public void point(){
         System.out.println("2222");
     }
