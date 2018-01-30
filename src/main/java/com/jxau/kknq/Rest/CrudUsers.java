@@ -6,7 +6,6 @@ import com.jxau.kknq.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -27,10 +26,14 @@ public class CrudUsers {
     public Users addUser(){
         Users user = new Users();
         user.setAge(19);
-        user.setUserName("罗文彬");
-        user.setAddress("宝安区安顺路");
+        user.setUserName("罗健");
+        user.setAddress("吉安市青原区");
+        user.setBirthday("1999-12-31");
+        user.setSex("男");
         user.setRegisterTime(new Date());
-        user.setTelPhone("15579653329");
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
+        user.setTelPhone("15575681125");
         return userRepository.save(user);
     }
 

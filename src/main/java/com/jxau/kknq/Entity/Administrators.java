@@ -14,35 +14,29 @@ import javax.persistence.TemporalType;
 import lombok.Data;
 
 /**
- * Author:zhongqiuping
- * Time:2018/1/28 15:22
- * Description: 网站用户实体类
+ * @author luowenbin
+ * @email luowenbin@hey900.com
+ * @date 2018/1/29 15:33
  */
 @Data
 @Entity
-public class Users {
-
+public class Administrators {
     @Id
     @GeneratedValue
     private int id;
 
-    @Column(name = "user_name")
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
+    @Column(name = "admin_name")
+    private String adminName;
 
     @Column(name = "age")
     private int age;
-
-    @Column(name = "address")
-    private String address;
 
     @Column(name = "tel")
     private String telPhone;
 
     /**
-     * 用户状态：0：有效用户 1：无效用户
+     * 管理员状态：0：普通管理员，拥有除删除用户外所有管理权
+     *            1：超级管理员，包括删除用户在内所有管理权
      */
     @Column(name = "status")
     @Value("0")
@@ -51,13 +45,6 @@ public class Users {
     @Column(name="sex")
     private String sex;
 
-    @Column(name="birth")
-    private String birthday;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "register_time")
-    private Date registerTime;
-
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_time")
     private Date createTime;
@@ -65,5 +52,4 @@ public class Users {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_time")
     private Date updateTime;
-
 }
