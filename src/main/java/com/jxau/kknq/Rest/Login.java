@@ -3,12 +3,17 @@ package com.jxau.kknq.Rest;
 import com.jxau.kknq.Entity.Users;
 import com.jxau.kknq.Repository.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author luowenbin
@@ -21,25 +26,38 @@ public class Login {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(value = "/login")
-    public String login(@RequestParam String telPhone,
-                        @RequestParam String password,
-                        HttpServletRequest request){
-        String userName = null;
-        Users user = userRepository.getUsersByTelPhoneAndPassword(telPhone,password);
+    @PostMapping(value = "/login")
+    public String login(HttpServletRequest request,
+            HttpServletResponse response){
+        String telPhone = request.getParameter("tel");
+        String password = request.getParameter("password");
+       Users user = userRepository.getUsersByTelPhoneAndPassword(telPhone,password);
         if(user == null){
-            return "账号密码错误";
+            return "error";
         }
-        request.setAttribute(telPhone,user.getTelPhone());
-//        request.setAttribute(userName,user.getUserName());
-        return "登陆成功!";
+        return "mainPage";
     }
 
-    @GetMapping(value = "/register")
-    public String register(HttpServletRequest request){
-        System.out.println(request.getAttribute("telPhone"));
+    @RequestMapping(value = "/login" , method = RequestMethod.GET)
+    public String login(){
+        return  "login";
+    }
+
+//    @GetMapping(value = "/register")
+//    public String register(HttpServletRequest request){
 //        System.out.println(request.getAttribute("telPhone"));
-        return "!";
+//        return "!";
+//    }
+
+    private Logger logger = LoggerFactory.getLogger(Login.class);
+    /**
+     * 测试hello
+     * @return
+     */
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String hello(Model model) {
+        model.addAttribute("name", "Dear");
+        return "hello";
     }
 
 }

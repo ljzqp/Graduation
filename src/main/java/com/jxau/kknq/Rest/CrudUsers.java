@@ -26,7 +26,7 @@ public class CrudUsers {
     public Users addUser(){
         Users user = new Users();
         user.setAge(19);
-        user.setUserName("罗健");
+        user.setUsername("罗健");
         user.setAddress("吉安市青原区");
         user.setBirthday("1999-12-31");
         user.setSex("男");
@@ -37,7 +37,7 @@ public class CrudUsers {
         return userRepository.save(user);
     }
 
-    @GetMapping(value ="/hello")
+    @GetMapping(value ="/helloa")
     public String sayHello(){
         return "Hello SpringBoot!!";
     }
