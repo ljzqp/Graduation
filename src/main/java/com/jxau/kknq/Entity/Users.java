@@ -1,4 +1,4 @@
-package com.jxau.kknq.Entity;
+package com.jxau.kknq.entity;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -31,6 +31,15 @@ public class Users {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    /**
+     * 注册类型：0：手机号码注册 1：邮箱注册
+     */
+    @Column(name = "register_type")
+    private int registerType;
 
     @Column(name = "age")
     private int age;

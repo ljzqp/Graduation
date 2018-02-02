@@ -2,26 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>LOGIN</title>
-
-    <script>
-        function myFunction() {
-            alert("你好，我是一个警告框！############################");
-        }
-
-        function check() {
-            var text1 = document.getElementById("telPhone");
-            if (text1.value == "") {
-                alert("不能为空哦！");
-            }
-        }
-    </script>
-
-
+    <title>Title</title>
 </head>
 <body>
 <!--/*@thymesVar id="user" type="com.jxau.kknq.entity.Users"*/-->
-<form class="form-signin" role="form" th:action="@{/login}" th:method="post">
+<form class="form-signin" role="form" th:action="@{/register}" th:method="post">
     <input th:type="text" class="form-control" placeholder="电话号码/用户名" required="required" name="telPhone" onblur="check()"/>
     <input th:type="text" class="form-control" placeholder="密码" required="required" name="password" onblur="check()"/>
     性别: 男<input type="radio" checked="checked" name="sex" value="M"/>
@@ -31,7 +16,7 @@
         <input type="checkbox" value="remember-me"/> 记住我
     </label>
 
-
 </form>
+sadadsasd
 </body>
 </html>

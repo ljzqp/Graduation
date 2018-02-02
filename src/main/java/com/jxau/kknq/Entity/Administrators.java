@@ -1,4 +1,4 @@
-package com.jxau.kknq.Entity;
+package com.jxau.kknq.entity;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -33,6 +33,9 @@ public class Administrators {
 
     @Column(name = "tel")
     private String telPhone;
+
+    @Column(name = "email")
+    private String email;
 
     /**
      * 管理员状态：0：普通管理员，拥有除删除用户外所有管理权

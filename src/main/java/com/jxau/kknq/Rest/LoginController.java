@@ -1,7 +1,6 @@
-package com.jxau.kknq.Rest;
+package com.jxau.kknq.rest;
 
-import com.jxau.kknq.Entity.Users;
-import com.jxau.kknq.Repository.UserRepository;
+import com.jxau.kknq.service.LoginService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,21 +20,23 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2018/1/29 15:39
  */
 @Controller
-public class Login {
-
+public class LoginController {
     @Autowired
-    private UserRepository userRepository;
+    LoginService loginService;
 
     @PostMapping(value = "/login")
     public String login(HttpServletRequest request,
-            HttpServletResponse response){
-        String telPhone = request.getParameter("tel");
-        String password = request.getParameter("password");
-       Users user = userRepository.getUsersByTelPhoneAndPassword(telPhone,password);
-        if(user == null){
-            return "error";
+                        HttpServletResponse response,
+                        Model model){
+        String method = request.getMethod(); // 获取请求方式，get或post
+        if("GET".equals(method)){
+            return "login";
+        }else if ("POST".equals(method)){
+            String telPhone = request.getParameter("telPhone"); // 获取用户登陆电话
+            String password = request.getParameter("password"); // 获取用户密码
+            return loginService.login(telPhone,password,request,model);
         }
-        return "mainPage";
+        return "login";
     }
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
@@ -49,7 +50,7 @@ public class Login {
 //        return "!";
 //    }
 
-    private Logger logger = LoggerFactory.getLogger(Login.class);
+    private Logger logger = LoggerFactory.getLogger(LoginController.class);
     /**
      * 测试hello
      * @return

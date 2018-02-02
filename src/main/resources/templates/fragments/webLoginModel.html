@@ -7,9 +7,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title th:text="${session.username ne null ? session.username +' - 可可浓情': ''}">可可浓情</title>
-    <link type="text/css" rel="stylesheet" href="/register/register.css"/>
-    <script type="text/javascript" src="/register/register.js"></script>
+    <title th:text="${session.baseConfig ne null ? session.baseConfig.name +' - 校园博客': ''}">校园博客</title>
+    <link type="text/css" rel="stylesheet" href="/web/register.css"/>
+    <script type="text/javascript" src="/web/register.js"></script>
 </head>
 <body>
 <div th:fragment="content" th:remove="tag">
