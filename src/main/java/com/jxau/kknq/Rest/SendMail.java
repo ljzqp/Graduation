@@ -44,11 +44,11 @@ public class SendMail {
             //设置邮件的发件人、收件人、主题
             //附带发件人名字
             message.setFrom(new InternetAddress("1915029771@qq.com"));
-            message.setRecipients(Message.RecipientType.TO, "617764428@qq.com");
+            message.setRecipients(Message.RecipientType.TO, "809687373@qq.com");
             message.setSubject("通过javamail发出！！！");
             //文本部分
             MimeBodyPart textPart = new MimeBodyPart();
-            textPart.setContent("图<img src='C:\\报表异常处理.jpg'/>文加附件邮件测试", "text/html;charset=UTF-8");
+            textPart.setContent("欢迎注册可可浓情~~验证码为：626520", "text/html;charset=UTF-8");
             //内嵌图片部分
             MimeBodyPart imagePart = new MimeBodyPart();
             imagePart.setDataHandler(new DataHandler(new FileDataSource("C:\\报表异常处理.jpg")));//图片路径

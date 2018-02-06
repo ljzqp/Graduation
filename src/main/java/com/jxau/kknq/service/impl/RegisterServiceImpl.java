@@ -5,7 +5,6 @@ import com.jxau.kknq.exception.SystemException;
 import com.jxau.kknq.repository.UserRepository;
 import com.jxau.kknq.service.RegisterService;
 import com.jxau.kknq.util.EmailUtil;
-import com.jxau.kknq.util.RandomUtil;
 import com.jxau.kknq.util.RequestUtil;
 import com.jxau.kknq.util.SecurityUtil;
 
@@ -34,10 +33,9 @@ public class RegisterServiceImpl implements RegisterService {
         Users user = userRepository.findByEmail(email);
         if(user!=null) {
             throw new SystemException("邮箱地址【"+email+"】已经存在。如果忘记密码请<a href='/findPwd'>找回密码</a>");
-        } else if(!registerCode.equalsIgnoreCase(code)) {
+        } else if(!code.equalsIgnoreCase(registerCode)) {
             throw new SystemException("邮箱验证码输入错误！");
         } else {
-            String randomCode = RandomUtil.randomCode(); //随机密码
             user = new Users();
             user.setCreateTime(new Date());
             user.setUpdateTime(new Date());
@@ -46,12 +44,12 @@ public class RegisterServiceImpl implements RegisterService {
             user.setRegisterTime(new Date());
             user.setRegisterType(1);
             try {
-                user.setPassword(SecurityUtil.md5(email, randomCode));
+                user.setPassword(SecurityUtil.md5(email, code));
             } catch (NoSuchAlgorithmException e) {
             }
             user.setStatus(0);
             userRepository.save(user);
-            emailUtil.sendRegisterSuc(email, randomCode, RequestUtil.getCurUrl(request)+"/web/login");
+            emailUtil.sendRegisterSuc(email, code, RequestUtil.getCurUrl(request)+"/web/login");
             emailUtil.sendOnRegister(RequestUtil.getAdminEmail(request), name, email, "#");
         }
         return "redirect:/login";

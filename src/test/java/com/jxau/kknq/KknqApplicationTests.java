@@ -1,5 +1,7 @@
 package com.jxau.kknq;
 
+import com.jxau.kknq.util.RandomUtil;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,10 @@ public class KknqApplicationTests {
         message.setSubject("测试邮件（邮件主题）");//邮件主题.
         message.setText("爸爸爱你！！");//邮件内容.
         mailSender.send(message);//发送邮件
+    }
+    @Test
+    public void random(){
+        System.out.println(RandomUtil.randomCode());
     }
 
 }

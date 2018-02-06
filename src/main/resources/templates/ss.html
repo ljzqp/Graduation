@@ -2,33 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>LOGIN</title>
+    <title>REGISTER</title>
 
     <script>
-        function myFunction() {
-            alert("你好，我是一个警告框！");
-        }a3
-
-        function check() {
-            var text1 = document.getElementById("telPhone");
-            if (text1.value == "") {
-                alert("不能为空哦！");
-            }
+        <![CDATA[
+//        document.getElementsById('registerCode').addEventListener("click",getRegisterCode);
+        function getRegisterCode() {
+            alert(1);
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var params = 'email'+email;
+            // 创建XMLHttpRequest()
+            var code = new XMLHttpRequest();
+//            // 设置请求头
+//            code.setRequestHeader('Content-type','application/x-www-from-urlencoded');
+//            code.open('GET','http://localhost:8080/kknq/sendEmail?email='+email,true);
+//            code.onload = function () {
+//                console.log(this.responseText);
+//            }
+//            code.send();
+//            window.location="http://localhost:8080/kknq/sendEmail?" + email+"&&name="+name;
         }
+        ]]>
     </script>
-
-
 </head>
 <body>
 <!--/*@thymesVar id="user" type="com.jxau.kknq.entity.Users"*/-->
-<form class="form-signin" role="form" th:action="@{/register}" th:method="post">
-    <p>姓名：<input th:type="text" class="form-control" placeholder="邮箱注册" required="required" name="name" onblur="check()"/></p>
-    <p>邮箱：<input th:type="text" class="form-control" placeholder="邮箱注册" required="required" name="email" onblur="check()"/></p>
-    <p>验证码：<input name="code" type="text" class="form-control" placeholder="请输入验证码" />获取验证码</p>
-    <div class="input-group-addon get-code-btn">获取验证码</div>
-    <p class="text-left" style="margin-top:30px;">
-        <button type="submit" class="btn btn-lg btn-danger"><i class="fa fa-unlock"></i> 提交登陆</button>
-    </p>
+<form class="form-signin" role="form" th:action="@{/sendEmail}" th:method="get">
+    <p>姓名：<input th:type="text" class="form-control" placeholder="请输入姓名" required="required" name="name" id="name" onblur="check()"/></p>
+    <p>邮箱：<input th:type="text" class="form-control" placeholder="邮箱注册" required="required" name="email" id="email" onblur="check()"/></p>
+
+
+        <p>验证码：<input name="code" type="text" class="form-control" placeholder="请输入验证码" /><button id="registerCode" onclick="getRegisterCode()">获取验证码</button> </p>
+
+
+        <button type="submit"><i class="fa fa-unlock"></i> 提交登陆</button>
+
 
     <label class="checkbox">
         <input type="checkbox" value="remember-me"/> 记住我

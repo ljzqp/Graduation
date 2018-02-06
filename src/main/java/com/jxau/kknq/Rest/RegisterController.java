@@ -3,7 +3,9 @@ package com.jxau.kknq.rest;
 import com.jxau.kknq.entity.Users;
 import com.jxau.kknq.repository.UserRepository;
 import com.jxau.kknq.service.RegisterService;
+import com.jxau.kknq.service.SendMailService;
 import com.jxau.kknq.util.EmailUtil;
+import com.jxau.kknq.util.RandomUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author luowenbin
@@ -28,6 +32,9 @@ public class RegisterController {
 
     @Autowired
     RegisterService registerService;
+
+    @Autowired
+    SendMailService sendMailService;
 
     @Autowired
     EmailUtil emailUtil;
@@ -58,19 +65,38 @@ public class RegisterController {
             return "register";
         }else if ("POST".equals(method)){
             registerCode = (String) request.getSession().getAttribute("registerCode");
+            System.out.println("验证码为："+registerCode);
         return registerService.register(email,code,name,registerCode,request);
         }
         return "login";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(){
+    public String register(HttpSession session, HttpServletRequest request){
         System.out.println("asasas");
         return "ss";
     }
 
-    @RequestMapping(value = "/sendEmail",method = RequestMethod.POST)
-    public String sendMail(){
-        return "下班";
+    @RequestMapping(value = "/sendEmail",method = RequestMethod.GET)
+    public String sendMail(
+            @RequestParam String email,
+            @RequestParam String name,HttpSession session, HttpServletRequest request){
+        System.out.println("I am coming");
+        String code = RandomUtil.randomCode(); // 生成验证码
+        System.out.println("生成的验证码"+code);
+        session.setAttribute("registerCode",code);
+//        String email = request.getParameter("email"); // 邮箱地址
+//        String name = request.getParameter("name"); // 用户昵称
+        System.out.println("name+"+name);
+        System.out.println("email+"+email);
+        sendMailService.sendMail(name,email,code);
+        System.out.println(code);
+        return "login";
     }
+
+//    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
+//    public String sendMail(){
+//        System.out.println("发送验证码");
+//        return "http://localhost:8080/kknq/sendEmail";
+//    }
 }
