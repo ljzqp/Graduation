@@ -24,6 +24,34 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+    public String index(){
+        return  "index";
+    }
+
+
+
+
+//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+//    public String index(){
+//        return  "index";
+//    }
+//
+//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+//    public String index(){
+//        return  "index";
+//    }
+//
+//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+//    public String index(){
+//        return  "index";
+//    }
+//
+//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
+//    public String index(){
+//        return  "index";
+//    }
+
     @PostMapping(value = "/login")
     public String login(HttpServletRequest request,
                         HttpServletResponse response,
