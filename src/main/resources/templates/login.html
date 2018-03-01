@@ -1,10 +1,10 @@
 ﻿<!doctype html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>jQuery注册登录改密表单代码 - 站长素材</title>
+<title>可可浓情注册</title>
 
-<script src="js/jquery.minlogin.js"></script>
+    <script src="js/jquery.minlogin.js"></script>
   <link type="text/css" rel="stylesheet" href="css/register.css"/>
   <script type="text/javascript" src="js/register.js"></script>
 
@@ -707,11 +707,32 @@ body {
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
   width: 25rem;
+  text-transform: lowercase;
 }
 .ui-field--hidden,
 .ui-button--hidden {
   height: 0;
   margin: 0;
+}
+
+.ui1-field,
+.ui-button {
+  border-radius: .7rem;
+  height: 4rem;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  width: 15rem;
+  text-transform: lowercase;
+}
+
+.ui2-field,
+.ui-button {
+  border-radius: .7rem;
+  height: 4rem;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  width: 10rem;
+  text-transform: lowercase;
 }
 
 .select__list {
@@ -798,54 +819,22 @@ button.--usr-rst::before {
   <form action="" method="" class="flex-c-c">
     <ul class="select__list">
       <li id="js-usr-rtn" class="select__label">登录</li>
-      <li id="js-usr-new" class="select__label select__label--active">注册</li>
+      <li id="js-usr-new" class="select__label select__label--active" >注册</li>
       <li id="js-usr-rst" class="select__label">忘记密码</li>
     </ul>
     <span class="pointer"></span>
-    <input type="email" placeholder="邮箱" class="ui-field" id="js-field__email" />
-    <input type="email" placeholder="验证码" class="ui-field" id="send__email" />
-    <button id="sendMail" >获取验证码</button>
+    <input type="text" placeholder="昵称" class="ui1-field" id="name" />
+    <input type="text" placeholder="邮箱" class="ui-field" id="js-field__email" />
+    <div>
+    <input type="email" placeholder="验证码" class="ui1-field" id="send__email" />
+    <button id="sendMail" class="ui2-field get-code-btn">获取验证码</button>
+    </div>
     <input type="password" placeholder="密码" class="ui-field" id="js-field__pass" />
     <input type="password" placeholder="确认密码" class="ui-field" id="js-field__r-pass" />
-    <button id="js-btn" class="ui-button --usr-new"></button>
+    <button id="js-btn" class="ui-button --usr-new" th:href="@{/index}"></button>
   </form>
 </div>
 
-
-<!--
-<div class="row login-box">
-  <div class="col-md-6">
-    <form method="post" id="addForm">
-      <div class="form-group form-group-lg text-left">
-        <input name="token" type="hidden" value="${token}"/>
-        <div class="form-group form-group-lg" style="margin-top:20px;">
-          <div class="input-group">
-            <div class="input-group-addon">姓名：</div>
-            <input name="name" type="text" class="form-control" placeholder="请输入姓名" />
-          </div>
-        </div>
-        <div class="form-group form-group-lg">
-          <div class="input-group">
-            <div class="input-group-addon">邮箱：</div>
-            <input id="email-id" type="text" class="form-control" placeholder="请输入邮箱" />
-          </div>
-        </div>
-        <div class="form-group form-group-lg">
-          <div class="input-group">
-            <div class="input-group-addon">验证码：</div>
-            <input name="code" type="text" class="form-control" placeholder="请输入验证码" />
-            <div class="input-group-addon get-code-btn">获取验证码</div>
-          </div>
-        </div>
-        <p class="text-left" style="margin-top:30px;">
-          <input name="email" type="hidden"/>
-          <button type="button" class="btn btn-lg btn-danger submit-btn"><i class="fa fa-registered"></i> 提交注册</button>
-          <a href="/findPwd" style="float:right;margin-top:12px;" title="若忘记密码，请点这里找回">找回密码？</a>
-        </p>
-      </div>
-    </form>
-  </div>
--->
 <script>
 //to-do. dry-up & remove jq
 $('.select__label').click(function() {
@@ -856,11 +845,14 @@ $('.select__label').click(function() {
 $('#js-usr-rtn').click(function() {
   $('#js-btn, .pointer, #js-field__pass').removeClass('--usr-new --usr-rst ui-field--hidden');
   $('#js-btn, .pointer').addClass('--usr-rtn');
-  $('#js-field__r-pass').addClass('ui-field--hidden');
+  $('#js-field__r-pass, .pointer').addClass('ui-field--hidden');
+  $('#sendMail, .pointer').addClass('ui2-field');
 });
 $('#js-usr-new').click(function() {
-  $('#js-btn, .pointer, #js-field__r-pass, #js-field__pass').removeClass('--usr-rtn --usr-rst ui-field--hidden');
+  $('#js-btn, .pointer, #js-field__r-pass, #js-field__pass').removeClass('--usr-rtn --usr-rst');
   $('#js-btn').addClass('--usr-new');
+  $('#js-field__r-pass, .pointer').addClass('--usr-new');
+  $('#js-field__pass, .pointer').addClass('--usr-new');
 });
 $('#js-usr-rst').click(function() {
   $('#js-btn, .pointer').removeClass('--usr-rtn --usr-new');

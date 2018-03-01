@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -74,29 +74,27 @@ public class RegisterController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(HttpSession session, HttpServletRequest request){
         System.out.println("asasas");
-        return "ss";
+        return "index";
     }
 
-    @RequestMapping(value = "/sendEmail",method = RequestMethod.GET)
-    public String sendMail(
-            @RequestParam String email,
-            @RequestParam String name,HttpSession session, HttpServletRequest request){
+    @RequestMapping(value = "/sendEmail",method = RequestMethod.POST)
+    public @ResponseBody String sendMail(String email,HttpServletRequest request){
         System.out.println("I am coming");
         String code = RandomUtil.randomCode(); // 生成验证码
         System.out.println("生成的验证码"+code);
-        session.setAttribute("registerCode",code);
+        request.getSession().setAttribute("registerCode",code);
 //        String email = request.getParameter("email"); // 邮箱地址
-//        String name = request.getParameter("name"); // 用户昵称
+        String name = request.getParameter("name"); // 用户昵称
         System.out.println("name+"+name);
         System.out.println("email+"+email);
         sendMailService.sendMail(name,email,code);
         System.out.println(code);
-        return "login";
+        return "1";
     }
 
 //    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
 //    public String sendMail(){
 //        System.out.println("发送验证码");
-//        return "http://localhost:8080/kknq/sendEmail";
+//        return "redirect:/login";
 //    }
 }

@@ -2,9 +2,9 @@ $(function() {
     $(".get-code-btn").click(function() {
         var thisObj = $(this);
         var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-        var email = $("#email-id").val();
+        var email = $("#js-field__email").val();
         if(!myreg.test(email)) {
-            showDialog("请输入正确的邮箱地址！");
+            alert("请输入正确的邮箱地址！");
         } else {
             $("input[name='email']").val(email); //设置
             $.post("/sendCode", {email:email}, function(res) {
