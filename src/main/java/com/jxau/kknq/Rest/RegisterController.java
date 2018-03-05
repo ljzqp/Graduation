@@ -77,15 +77,17 @@ public class RegisterController {
         return "index";
     }
 
-    @RequestMapping(value = "/sendEmail",method = RequestMethod.POST)
-    public @ResponseBody String sendMail(String email,HttpServletRequest request){
+    @RequestMapping(value = "/sendEmail",method = RequestMethod.GET)
+    public @ResponseBody String sendMail(String email,HttpServletRequest request,HttpSession session){
         System.out.println("I am coming");
         String code = RandomUtil.randomCode(); // 生成验证码
         System.out.println("生成的验证码"+code);
         request.getSession().setAttribute("registerCode",code);
 //        String email = request.getParameter("email"); // 邮箱地址
         String name = request.getParameter("name"); // 用户昵称
+        String name1 = session.getAttribute("name").toString(); // 用户昵称
         System.out.println("name+"+name);
+        System.out.println("name1+"+name1);
         System.out.println("email+"+email);
         sendMailService.sendMail(name,email,code);
         System.out.println(code);
@@ -93,8 +95,8 @@ public class RegisterController {
     }
 
 //    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
-//    public String sendMail(){
+//    public @ResponseBody String sendMail(){
 //        System.out.println("发送验证码");
-//        return "redirect:/login";
+//        return "1";
 //    }
 }
