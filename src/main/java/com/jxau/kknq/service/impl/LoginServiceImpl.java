@@ -47,4 +47,22 @@ public class LoginServiceImpl implements LoginService {
             throw new SystemException("登陆异常");
         }
     }
+
+    @Override
+    public int loginCheck(String username, String password) {
+        Users user;
+        user = userRepository.getUsersByUsername(username, password);
+
+        if (user != null && user.getStatus() !=1){
+            return 1001;
+        }
+        else{
+            return 1000;
+        }
+
+
+
+    }
+
+
 }

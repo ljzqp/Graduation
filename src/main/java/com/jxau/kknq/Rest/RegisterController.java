@@ -1,5 +1,6 @@
 package com.jxau.kknq.rest;
 
+import com.jxau.kknq.entity.Result;
 import com.jxau.kknq.entity.Users;
 import com.jxau.kknq.repository.UserRepository;
 import com.jxau.kknq.service.RegisterService;
@@ -99,4 +100,18 @@ public class RegisterController {
 //        System.out.println("发送验证码");
 //        return "1";
 //    }
+
+    @RequestMapping(value = "/register/test", method = RequestMethod.GET)
+    @ResponseBody
+    public Result register1(HttpServletRequest request){
+        System.out.println("register");
+        String username = request.getParameter("uname");
+        String password = request.getParameter("upwd");
+        String birth = request.getParameter("birthday");
+        String address = request.getParameter("location");
+        int status = registerService.register(username,password,birth,address);
+        return new Result(status);
+    }
+
+
 }

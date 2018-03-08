@@ -9,4 +9,5 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface RegisterService {
     String register(String email,String code,String name,String registerCode,HttpServletRequest request);
+    int register(String username,String password,String birth,String address);
 }

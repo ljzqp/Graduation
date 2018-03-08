@@ -1,5 +1,6 @@
 package com.jxau.kknq.rest;
 
+import com.jxau.kknq.entity.Result;
 import com.jxau.kknq.service.LoginService;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,27 +32,11 @@ public class LoginController {
     }
 
 
+    @RequestMapping(value = "/qcart" , method = RequestMethod.GET)
+    public String cart(){
+        return  "payCart";
+    }
 
-
-//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
-//    public String index(){
-//        return  "index";
-//    }
-//
-//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
-//    public String index(){
-//        return  "index";
-//    }
-//
-//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
-//    public String index(){
-//        return  "index";
-//    }
-//
-//    @RequestMapping(value = "/index" , method = RequestMethod.GET)
-//    public String index(){
-//        return  "index";
-//    }
 
     @PostMapping(value = "/login")
     public String login(HttpServletRequest request,
@@ -70,6 +56,19 @@ public class LoginController {
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public String login(){
         return  "login";
+    }
+
+
+    @RequestMapping(value = "/login/test", method = RequestMethod.GET)
+    @ResponseBody
+    public Result loginTest(HttpServletRequest request) {
+        System.out.println("------------loginTest-----------");
+        String username = request.getParameter("uname");
+        String password = request.getParameter("upwd");
+        System.out.println("nananan"+username);
+        System.out.println("seefefefe"+password);
+       int status = loginService.loginCheck(username,password);
+        return new Result(status);
     }
 
 //    @GetMapping(value = "/register")

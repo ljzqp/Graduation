@@ -11,4 +11,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface LoginService {
     String login(String telPhone, String password, HttpServletRequest request,Model model);
+
+    int loginCheck(String username, String password);
 }

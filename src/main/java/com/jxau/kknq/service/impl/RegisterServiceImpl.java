@@ -54,4 +54,25 @@ public class RegisterServiceImpl implements RegisterService {
         }
         return "redirect:/login";
     }
+
+    @Override
+    public int register(String username,String password,String birth,String address) {
+        Users user = new Users();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setRegisterTime(new Date());
+        user.setAddress(address);
+        user.setBirthday(birth);
+        user.setStatus(0);
+        user.setRegisterType(1);
+        try {
+            userRepository.save(user);
+        }
+        catch (Exception e){
+            return 1000;
+        }
+        return 2000;
+    }
+
+
 }
