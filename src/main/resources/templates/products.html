@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
-    <link type="text/css" href="../static/css/common.css" rel="stylesheet" />
-    <link type="text/css" href="../static/css/products.css" rel="stylesheet" />
+    <link type="text/css" th:href="@{/css/common.css}" />
+    <link type="text/css" th:href="@{/css/products.css}" rel="stylesheet" />
 </head>
 <body>
 <a name="top1"></a>
@@ -15,20 +15,32 @@
 <!--section-->
     <section id="section">
         <!--中间nav-->
+        <div id="loc">
+            <a th:href="@{/index}">首页</a>
+
+            >蛋糕目录
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input id="keyword" type="text" name="keyWord" autofocus placeholder="关键字" >
+            <a th:href="@{/keyWord/cakes}"  class="active" data-sort="0">搜索</a></dd>
+        </div>
         <div id="nav">
             <dl>
                 <dt>蛋糕类别：</dt>
-                <dd><a href="#"  class="active" data-sort="0">全部</a></dd>
-                <dd><a href="#" data-sort="01">新锐系列</a></dd>
-                <dd><a href="#" data-sort="02">卡通系列</a></dd>
-                <dd><a href="#" data-sort="03">彩虹系列</a></dd>
-                <dd><a href="#" data-sort="04">春暖花开系列</a></dd>
+                <dd><a th:href="@{/0/cakes}"  class="active" data-sort="0">全部</a></dd>
+                <dd><a data-sort="01" th:href="@{/1/cakes}">新锐系列</a></dd>
+                <dd><a data-sort="02" th:href="@{/2/cakes}" >卡通系列</a></dd>
+                <dd><a data-sort="03" th:href="@{/3/cakes}">彩虹系列</a></dd>
+                <dd><a data-sort="04" th:href="@{/4/cakes}">春暖花开系列</a></dd>
             </dl>
             <dl>
                 <dt>下午茶类别：</dt>
-                <dd ><a href="#" class="active" data-sort="0">全部</a></dd>
-                <dd><a href="#" data-sort="05">杯子蛋糕</a></dd>
-                <dd><a href="#" data-sort="06">泡芙系列</a></dd>
+                <dd ><a th:href="@{/01/cakes}" class="active" data-sort="0">全部</a></dd>
+                <dd><a th:href="@{/5/cakes}" data-sort="05">杯子蛋糕</a></dd>
+                <dd><a th:href="@{/6/cakes}" data-sort="06">泡芙系列</a></dd>
             </dl>
         </div>
         <div id="sort">
@@ -39,11 +51,11 @@
     <footer id="footer">
     </footer>
 
-<script src="../static/js/jquery.js"></script>
-<script src="../static/js/jquery.fly.min.js"></script>
-<script src="../static/js/requestAnimationFrame.js"></script>
-<script src="../static/js/common.js"></script>
-<script src="../static/js/products.js"></script>
+<script th:href="@{/js/jquery.js}" ></script>
+<script th:href="@{/js/jquery.fly.min.js}" ></script>
+<script th:href="@{/js/requestAnimationFrame.js}" ></script>
+<script th:href="@{/js/common.js}" ></script>
+<script th:href="@{/js/products.js}" ></script>
 <!--<script src="js/login-regist.js"></script>-->
 </body>
 </html>

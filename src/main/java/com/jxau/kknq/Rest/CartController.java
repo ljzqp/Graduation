@@ -13,6 +13,6 @@ public class CartController {
 
     @GetMapping(value = "cart")
     public String cart(){
-        return "cart";
+        return "payCart";
     }
 }

@@ -81,7 +81,7 @@ public class CenterController {
         return "centerPwd";
     }
 
-    @GetMapping(value = "vip/stroy")
+    @GetMapping(value = "vip/story")
     public String getVipStory() {
         return "centerStroy";
     }

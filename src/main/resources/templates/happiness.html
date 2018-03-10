@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
     <style type="text/css">
         .grid{
             width: 300px;
@@ -67,6 +67,10 @@
     </header>
 <!--主体部分-->
     <section id="seaction" class="over">
+        <div id="loc">
+            <a th:href="@{/index}">首页</a>
+            >品牌故事
+        </div>
         <div id="story-title">
             <h2>
                 说出你们的幸福故事
@@ -76,7 +80,7 @@
                 在这里晒出你的故事，把你的幸福传递给我们的朋友吧^-^<br>
                 <span>我们也将不定期的抽取一名幸运朋友送去我们一些节日的祝福!</span>
             </h3>
-            <a href="upload.html">+</a>
+            <a th:href="@{/vip/upload}">+</a>
         </div>
         <div id="story-box">
         </div>
@@ -86,8 +90,8 @@
 <!--页面底部购物指南等-->
     <footer id="footer">
     </footer>
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
-<script src="js/happiness.js" ></script>
+<script th:href="@{/js/jquery.js}"></script>
+<script th:href="@{/js/common.js}"></script>
+<script th:href="@{/js/happiness.js}" ></script>
 </body>
 </html>

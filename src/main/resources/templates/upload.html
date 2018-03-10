@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>将你的故事分享</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/upload.css">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/upload.css}">
 </head>
 <body>
+
 <a name="top1"></a>
 <header id="header"></header>
 <section id="section">
     <div id="loc">
-        <a href="happiness.html">述说幸福</a>
+        <a th:href="@{/index}">首页</a>
+        >
+        <a th:href="@{/happiness}">述说幸福</a>
         >
         上传故事
     </div>
@@ -39,8 +42,8 @@
     </div>
 </section>
 <footer id="footer"></footer>
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
+<script th:href="@{/js/jquery.js}"></script>
+<script th:href="@{/js/common.js}"></script>
 <script>
     //加载头部和底部
        init();

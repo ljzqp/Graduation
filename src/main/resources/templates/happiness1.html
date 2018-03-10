@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
     <style type="text/css">
         #section{
             width: 1045px;
@@ -64,7 +64,7 @@
 <!--主体部分-->
 <section id="section" class="over">
     <div id="loc">
-        <a href="index.html">首页</a>
+        <a th:href="@{/index}">首页</a>
         >
         <a href="happiness.html">述说故事</a>
         >不是最好的都不敢给你
@@ -141,8 +141,8 @@
 <footer id="footer">
 </footer>
 
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
+<script th:href="@{/js/jquery.js}"></script>
+<script th:href="@{/js/common.js}"></script>
 
 </body>
 </html>

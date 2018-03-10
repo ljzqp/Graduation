@@ -154,8 +154,8 @@
                 <a href="center.html" id="login-btn1" class="hide active"></a>
                 <a href="#" id="regist-btn">注册</a>
                 <a href="#" class="hide" id="enter">[退出]</a>
-                <a href="centerOrder.html">我的订单</a>
-                <a href="payCart.html" class="none" id="none">购物车（<span id="number">0</span>）</a>
+                <a href="/kknq/vip/orders">我的订单</a>
+                <a href="/kknq/cart" class="none" id="none">购物车（<span id="number">0</span>）</a>
             </li>
             <li>
                 <a href="#">深圳市内免费送达</a>

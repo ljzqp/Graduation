@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
-    <link type="text/css" href="css/common.css" rel="stylesheet" />
+    <link type="text/css" th:href="@{/css/common.css}" rel="stylesheet" />
     <style>
         #section{
             width: 100%;
@@ -15,6 +15,10 @@
     </style>
 </head>
 <body>
+<div id="loc">
+    <a th:href="@{/index}">首页</a>
+    >品牌故事
+</div>
 <a name="top1"></a>
 <!--头部nav和logo-->
 <header id="header">
@@ -22,17 +26,20 @@
 </header>
 <!--section-->
 <section id="section">
+
     <div id="background">
         <img src="images/pinpaigushi01.jpg"   />
         <img src="images/pinpaigushi02.png"  />
         <img src="images/pinpaigushi03.png" />
         <img src="images/pinpaigushi04.png"  />
     </div>
+
 </section>
+
 <!--底部其它信息-->
 <footer id="footer">
 </footer>
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
+<script th:href="@{/js/jquery.js}"></script>
+<script th:href="@{/js/common.js}"></script>
 </body>
 </html>

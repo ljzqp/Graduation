@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/pay.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pay.css}">
 
 </head>
 <body>
@@ -12,10 +12,10 @@
 <header id="header"></header>
 <section id="section">
     <div id="loc">
-        <a href="index.html">首页</a>
+        <a th:href="@{/index}">首页</a>
         >
-        <a href="products.html">蛋糕目录</a>
-        ><a href="deteil.html">蛋糕详情页</a>
+        <a th:href="@{/products}">蛋糕目录</a>
+        ><a th:href="@{/deteils}">蛋糕详情页</a>
         >购物车
     </div>
     <div class="pay-title">
@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><a href="#"><img src="images/xin1.jpg" style="width: 100px;height: 100px;"></a></td>
+                    <td><a href="#"><img src="images/lang01.jpg" style="width: 100px;height: 100px;"></a></td>
                     <td><a href="#">STARRY SKY星空</a></td>
                     <td>2.0磅 / 10份 标配餐具</td>
                     <td>￥<span class="pri">308</span>.00 元</td>
