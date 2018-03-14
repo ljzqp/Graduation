@@ -1,7 +1,7 @@
 package com.jxau.kknq.service.impl;
 
-import com.jxau.kknq.entity.Products;
-import com.jxau.kknq.repository.ProductsRepository;
+import com.jxau.kknq.Entity.Products;
+import com.jxau.kknq.Repository.ProductsRepository;
 import com.jxau.kknq.service.ProductsService;
 import com.jxau.kknq.util.PageResult;
 

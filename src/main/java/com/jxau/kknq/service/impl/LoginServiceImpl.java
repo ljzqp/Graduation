@@ -1,8 +1,8 @@
 package com.jxau.kknq.service.impl;
 
-import com.jxau.kknq.entity.Users;
+import com.jxau.kknq.Entity.Users;
 import com.jxau.kknq.exception.SystemException;
-import com.jxau.kknq.repository.UserRepository;
+import com.jxau.kknq.Repository.UserRepository;
 import com.jxau.kknq.service.LoginService;
 import com.jxau.kknq.util.SecurityUtil;
 

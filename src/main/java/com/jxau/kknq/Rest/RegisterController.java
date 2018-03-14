@@ -1,8 +1,8 @@
-package com.jxau.kknq.rest;
+package com.jxau.kknq.Rest;
 
-import com.jxau.kknq.entity.Result;
-import com.jxau.kknq.entity.Users;
-import com.jxau.kknq.repository.UserRepository;
+import com.jxau.kknq.Entity.Result;
+import com.jxau.kknq.Entity.Users;
+import com.jxau.kknq.Repository.UserRepository;
 import com.jxau.kknq.service.RegisterService;
 import com.jxau.kknq.service.SendMailService;
 import com.jxau.kknq.util.EmailUtil;
