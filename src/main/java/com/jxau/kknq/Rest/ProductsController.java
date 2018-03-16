@@ -7,14 +7,12 @@ import com.jxau.kknq.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author luowenbin
@@ -36,23 +34,27 @@ public class ProductsController {
         return "deteil";
     }
 
-    @RequestMapping(value = "/{type}/cakes", method = RequestMethod.GET)
+    @RequestMapping(value = "/cakes", method = RequestMethod.GET)
     @ResponseBody
     public PageResult<List<Products>> getCakesByType(
-            @PathVariable("type") int type,
+            @RequestParam("sort") int sort,
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize) {
-        return productsService.getProductsByType(type,pageNum, pageSize);
+        return productsService.getProductsByType(sort,pageNum, pageSize);
     }
 
     @RequestMapping(value = "/keyWord/cakes", method = RequestMethod.GET)
     @ResponseBody
     public PageResult<List<Products>> searchCakes(
-            HttpServletRequest request,
+            @RequestParam("keyword") String keyword,
             @RequestParam(defaultValue = "1") Integer pageNum,
             @RequestParam(defaultValue = "10") Integer pageSize) {
-        String keyWord = request.getParameter("keyWord");
-        System.out.println("key____________"+keyWord);
-        return productsService.getProductsByKeyWord(keyWord,pageNum, pageSize);
+        System.out.println("key____________"+keyword);
+        return productsService.getProductsByKeyWord(keyword,pageNum, pageSize);
+    }
+
+    @GetMapping(value = "test/hello")
+    public String test(){
+        return "Hello World!!";
     }
 }

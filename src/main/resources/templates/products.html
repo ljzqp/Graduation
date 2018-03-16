@@ -25,13 +25,13 @@
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <input id="keyword" type="text" name="keyWord" autofocus placeholder="关键字" >
-            <a th:href="@{/keyWord/cakes}"  class="active" data-sort="0">搜索</a></dd>
+            <a id="search"  class="active" data-sort="0">搜索</a></dd>
         </div>
         <div id="nav">
             <dl>
                 <dt>蛋糕类别：</dt>
                 <dd><a th:href="@{/0/cakes}"  class="active" data-sort="0">全部</a></dd>
-                <dd><a data-sort="01" th:href="@{/1/cakes}">新锐系列</a></dd>
+                <dd><a data-sort="01" >新锐系列</a></dd>
                 <dd><a data-sort="02" th:href="@{/2/cakes}" >卡通系列</a></dd>
                 <dd><a data-sort="03" th:href="@{/3/cakes}">彩虹系列</a></dd>
                 <dd><a data-sort="04" th:href="@{/4/cakes}">春暖花开系列</a></dd>
@@ -51,11 +51,17 @@
     <footer id="footer">
     </footer>
 
-<script th:href="@{/js/jquery.js}" ></script>
-<script th:href="@{/js/jquery.fly.min.js}" ></script>
-<script th:href="@{/js/requestAnimationFrame.js}" ></script>
-<script th:href="@{/js/common.js}" ></script>
-<script th:href="@{/js/products.js}" ></script>
+<!--<script th:href="@{/js/jquery.js}" ></script>-->
+<!--<script th:href="@{/js/jquery.fly.min.js}" ></script>-->
+<!--<script th:href="@{/js/requestAnimationFrame.js}" ></script>-->
+<!--<script th:href="@{/js/common.js}" ></script>-->
+<!--<script th:href="@{/js/products.js}" ></script>-->
 <!--<script src="js/login-regist.js"></script>-->
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.fly.min.js"></script>
+<script src="js/requestAnimationFrame.js"></script>
+<!--<script src="js/common.js"></script>-->
+<script src="js/products.js"></script>
 </body>
 </html>
