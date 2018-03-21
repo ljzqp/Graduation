@@ -1,4 +1,4 @@
-package com.jxau.kknq.Entity;
+package com.jxau.kknq.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

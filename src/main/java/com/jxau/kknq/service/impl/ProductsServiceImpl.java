@@ -1,7 +1,7 @@
 package com.jxau.kknq.service.impl;
 
-import com.jxau.kknq.Entity.Products;
-import com.jxau.kknq.Repository.ProductsRepository;
+import com.jxau.kknq.entity.Products;
+import com.jxau.kknq.repository.ProductsRepository;
 import com.jxau.kknq.service.ProductsService;
 import com.jxau.kknq.util.PageResult;
 
@@ -38,14 +38,14 @@ public class ProductsServiceImpl implements ProductsService {
             pageable = new PageRequest(pageNum - 1, pageSize);
         }
 
-        if (type == 0) {
+        if (type == 9) {
             sortMin = 0;
             sortMax = 4;
             Specification<Products> specification = getSpecification(sortMin, sortMax);
             page = productsRepository.findAll(specification, pageable);
 
         }
-        if (type == 01) {
+        else if (type == 8) {
             sortMin = 5;
             sortMax = 6;
             Specification<Products> specification = getSpecification(sortMin, sortMax);
@@ -68,7 +68,7 @@ public class ProductsServiceImpl implements ProductsService {
         List<Products> products;
 
         Specification<Products> specification= (root, query, cb) -> {
-            Predicate p2 = cb.like(root.get("pname").as(String.class), "%"+keyWord+"%");
+            Predicate p2 = cb.like(root.get("productName").as(String.class), "%"+keyWord+"%");
             query.where(cb.and(p2));
             return query.getRestriction();
         };
@@ -92,7 +92,4 @@ public class ProductsServiceImpl implements ProductsService {
         };
     }
 
-    //测试提交
-
-    //ccc
 }

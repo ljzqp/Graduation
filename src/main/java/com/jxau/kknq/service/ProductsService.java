@@ -1,6 +1,6 @@
 package com.jxau.kknq.service;
 
-import com.jxau.kknq.Entity.Products;
+import com.jxau.kknq.entity.Products;
 import com.jxau.kknq.util.PageResult;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 
 //动态生成
 $(function () {
-    var sort=0;
+    var sort=9;
     getjson(sort);
     $('#nav dl dd a').click(function(e){
         e.preventDefault();
@@ -12,7 +12,6 @@ $(function () {
     $('#search').click(function(e){
         e.preventDefault();
         var keyword=$('#keyword').val();
-        alert(keyword);
         $($(this)).addClass('active').parent().siblings().children('a').removeClass('active');
         search_getjson(keyword);
     });

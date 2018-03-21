@@ -25,22 +25,22 @@
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <input id="keyword" type="text" name="keyWord" autofocus placeholder="关键字" >
-            <a id="search"  class="active" data-sort="0">搜索</a></dd>
+            <a id="search"  class="active" data-sort="0" href="#">搜索</a></dd>
         </div>
         <div id="nav">
             <dl>
                 <dt>蛋糕类别：</dt>
-                <dd><a th:href="@{/0/cakes}"  class="active" data-sort="0">全部</a></dd>
-                <dd><a data-sort="01" >新锐系列</a></dd>
-                <dd><a data-sort="02" th:href="@{/2/cakes}" >卡通系列</a></dd>
-                <dd><a data-sort="03" th:href="@{/3/cakes}">彩虹系列</a></dd>
-                <dd><a data-sort="04" th:href="@{/4/cakes}">春暖花开系列</a></dd>
+                <dd><a class="active" data-sort="09" href="#">全部</a></dd>
+                <dd><a data-sort="01" href="#">新锐系列</a></dd>
+                <dd><a data-sort="02" href="#">卡通系列</a></dd>
+                <dd><a data-sort="03" href="#">彩虹系列</a></dd>
+                <dd><a data-sort="04" href="#">春暖花开系列</a></dd>
             </dl>
             <dl>
                 <dt>下午茶类别：</dt>
-                <dd ><a th:href="@{/01/cakes}" class="active" data-sort="0">全部</a></dd>
-                <dd><a th:href="@{/5/cakes}" data-sort="05">杯子蛋糕</a></dd>
-                <dd><a th:href="@{/6/cakes}" data-sort="06">泡芙系列</a></dd>
+                <dd><a href="#" class="active" data-sort="8">全部</a></dd>
+                <dd><a href="#" data-sort="05">杯子蛋糕</a></dd>
+                <dd><a href="#" data-sort="06">泡芙系列</a></dd>
             </dl>
         </div>
         <div id="sort">
@@ -49,7 +49,30 @@
     </section>
 <!--底部其它信息-->
     <footer id="footer">
+
     </footer>
+<span>
+
+</span>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td height="33">
+            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
+                <tr>
+                    <td width="48%" align="center">[<a th:href="@{/cake(sort='9',pageNum='2',pageSize='20')}" class="right-font08">首页</a> | <a href="${pageContext.request.contextPath }/goods/getGoodsList?currentPage=${page.currentPage-1}" onclick="return checkFirst()" class="right-font08">上一页</a> | <a href="${pageContext.request.contextPath }/goods/getGoodsList?currentPage=${page.currentPage+1}" onclick="return checkNext()" class="right-font08">下一页</a> | <a href="${pageContext.request.contextPath }/goods/getGoodsList?currentPage=${page.totalPage}" class="right-font08">末页</a>] 转至：<input id="inputPage" name="textfield3" type="text" class="right-textfield03" size="3" /><input id="go" name="Submit23222" type="button" class="button08" value="GO" onclick="pageGo();" /></td>
+                    <td width="5%" align="center">
+                        <!--<table width="20" border="0" cellspacing="0" cellpadding="0" >-->
+                            <!--<tr>-->
+                                <!--<td width="1%"><input id="inputPage" name="textfield3" type="text" class="right-textfield03" size="3" /></td>-->
+                                <!--<td width="87%" ><input id="go" name="Submit23222" type="button" class="button08" value="GO" onclick="pageGo();" /></td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 
 <!--<script th:href="@{/js/jquery.js}" ></script>-->
 <!--<script th:href="@{/js/jquery.fly.min.js}" ></script>-->

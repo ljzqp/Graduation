@@ -1,6 +1,7 @@
-package com.jxau.kknq.Repository;
+package com.jxau.kknq.repository;
 
-import com.jxau.kknq.Entity.Products;
+
+import com.jxau.kknq.entity.Products;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

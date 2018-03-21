@@ -1,7 +1,7 @@
 package com.jxau.kknq.util;
 
-import com.jxau.kknq.Entity.Administrators;
-import com.jxau.kknq.Entity.Users;
+import com.jxau.kknq.entity.Administrators;
+import com.jxau.kknq.entity.Users;
 
 import javax.servlet.http.HttpServletRequest;
 

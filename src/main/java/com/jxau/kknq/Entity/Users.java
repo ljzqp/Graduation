@@ -1,4 +1,4 @@
-package com.jxau.kknq.Entity;
+package com.jxau.kknq.entity;
 
 import org.springframework.beans.factory.annotation.Value;
 

@@ -1,4 +1,4 @@
-package com.jxau.kknq.Rest;
+package com.jxau.kknq.rest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

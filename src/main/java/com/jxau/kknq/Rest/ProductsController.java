@@ -1,6 +1,6 @@
-package com.jxau.kknq.Rest;
+package com.jxau.kknq.rest;
 
-import com.jxau.kknq.Entity.Products;
+import com.jxau.kknq.entity.Products;
 import com.jxau.kknq.service.ProductsService;
 import com.jxau.kknq.util.PageResult;
 
@@ -39,7 +39,7 @@ public class ProductsController {
     public PageResult<List<Products>> getCakesByType(
             @RequestParam("sort") int sort,
             @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
+            @RequestParam(defaultValue = "20") Integer pageSize) {
         return productsService.getProductsByType(sort,pageNum, pageSize);
     }
 
@@ -48,7 +48,7 @@ public class ProductsController {
     public PageResult<List<Products>> searchCakes(
             @RequestParam("keyword") String keyword,
             @RequestParam(defaultValue = "1") Integer pageNum,
-            @RequestParam(defaultValue = "10") Integer pageSize) {
+            @RequestParam(defaultValue = "20") Integer pageSize) {
         System.out.println("key____________"+keyword);
         return productsService.getProductsByKeyWord(keyword,pageNum, pageSize);
     }
