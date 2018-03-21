@@ -1,6 +1,6 @@
-package com.jxau.kknq.rest;
+package com.jxau.kknq.Rest;
 
-import com.jxau.kknq.entity.Products;
+import com.jxau.kknq.Entity.Products;
 import com.jxau.kknq.service.ProductsService;
 import com.jxau.kknq.util.PageResult;
 

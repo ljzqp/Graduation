@@ -1,4 +1,4 @@
-package com.jxau.kknq.rest;
+package com.jxau.kknq.Rest;
 
 import java.security.Security;
 import java.text.SimpleDateFormat;

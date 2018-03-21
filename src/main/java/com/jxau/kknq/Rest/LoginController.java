@@ -1,6 +1,6 @@
-package com.jxau.kknq.rest;
+package com.jxau.kknq.Rest;
 
-import com.jxau.kknq.entity.Result;
+import com.jxau.kknq.Entity.Result;
 import com.jxau.kknq.service.LoginService;
 
 import org.slf4j.Logger;

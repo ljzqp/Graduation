@@ -1,4 +1,4 @@
-package com.jxau.kknq.entity;
+package com.jxau.kknq.Entity;
 
 /**
  * @author luowenbin

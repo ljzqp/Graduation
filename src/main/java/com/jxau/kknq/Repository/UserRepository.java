@@ -1,7 +1,7 @@
-package com.jxau.kknq.repository;
+package com.jxau.kknq.Repository;
 
 
-import com.jxau.kknq.entity.Users;
+import com.jxau.kknq.Entity.Users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

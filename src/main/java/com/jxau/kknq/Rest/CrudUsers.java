@@ -1,7 +1,7 @@
-package com.jxau.kknq.rest;
+package com.jxau.kknq.Rest;
 
-import com.jxau.kknq.entity.Users;
-import com.jxau.kknq.repository.UserRepository;
+import com.jxau.kknq.Entity.Users;
+import com.jxau.kknq.Repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
