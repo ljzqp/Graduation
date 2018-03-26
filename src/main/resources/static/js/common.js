@@ -304,6 +304,9 @@ function Total() {
 
 //    加入购物车
 function addCar(data){
+    var str = location.href; //取得整个地址栏
+    var num = str.indexOf("?");
+    str = str.substr(num+1);
     if(!window.sessionStorage.getItem('loginName')){
         $('#login-box').css('display','block');
     }else{
@@ -336,15 +339,29 @@ function addCar(data){
             });
         });
         $.ajax({
-            type:"POST",
-            url:"",
-            data:"",
-            success:function (response) {
-                // var number = $('#number').text();
-                // number++;
-                // $('#number').text(number);
+               type:"GET",
+               url:"/kknq/get/cake",
+               data:str,
+               dataType: 'json',
+                   success:function (response) {
+                       var json = JSON.stringify(response);
+                       var product = eval("("+json+")");
+                       if(product.type == 6 || product.type == 7){
+                           $('.rt-size').html('<a href="#" class="active">1.0磅</a>');
+                       }
+                       // $('.rt-img').attr('src',product.productImgUrl);
+                       // $('.rt-title').text(product.productTitle);
+                       // $('.rt-info').text(product.productName);
+                       // $('.rt-price').text("价格：¥"+product.price+"RMB");
+                       // $('.psmell').text(product.productSmell);
+                       // $('.psort').text(product.productSort);
+                       // $('.pmaterial').text(product.productTitle);
+                       // $('.addCar').html(`<a href="#" class="addCar" data-id="${product.productId}">加入购物车</a>`);
+                       // $('.index').html(product.productTitle);
+                       // $('#initPrice').text(product.price);
             },
             error:function (response) {
+                   alert("宣布你失败了！！")
 
             }
         })

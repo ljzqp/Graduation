@@ -95,7 +95,7 @@
         var count = document.getElementById("countNumber").value;
         var countInt = parseInt(count) + 1;
         var totalPrice = document.getElementById("totalPrice");
-        totalPrice.innerText = "价格：¥ " + price*countInt + " RMB";
+        totalPrice.innerText = "价格：¥ " + price*countInt + "RMB";
     }
 
     function cutNum() {
@@ -134,7 +134,7 @@
                 $('.rt-img').attr('src',product.productImgUrl);
                 $('.rt-title').text(product.productTitle);
                 $('.rt-info').text(product.productName);
-                $('.rt-price').text("价格：¥ "+product.price+" RMB");
+                $('.rt-price').text("价格：¥"+product.price+"RMB");
                 $('.psmell').text(product.productSmell);
                 $('.psort').text(product.productSort);
                 $('.pmaterial').text(product.productTitle);
