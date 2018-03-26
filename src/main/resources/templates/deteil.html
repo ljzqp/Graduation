@@ -9,6 +9,7 @@
 <body>
 <header id="header"></header>
 <section id="section">
+    <input type="hidden" id="initPrice"/>
     <div id="loc">
         <a href="index.html">首页</a>
         >
@@ -21,12 +22,12 @@
         </div>
         <div id="product-title-rt">
             <div class="rt-title"><!--STARRY SKY星空--></div>
-            <div class="rt-price">价格：<!--<span class="price">￥160RMB</span>--></div>
+            <div id="totalPrice" class="rt-price">价格：<!--<span class="price">￥160RMB</span>--></div>
             <div class="rt-size">
                 <a href="#" class="active">1.0磅：约12x12(cm)</a>
                 <a href="#">2.0磅：约16x16(cm)</a>
             </div>
-            <div class="rt-sum">数量：<a href="#" class="cut">-</a><input type="text" value="1"><a href="#" class="add">+</a></div>
+            <div class="rt-sum">数量：<a onclick="javascript:cutNum()" href="#" class="cut">-</a><input type="text" value="1" id="countNumber"><a onclick="javascript:addNum()" href="#" class="add">+</a></div>
             <div class="rt-buy">
                 <a href="#" class="addCar" data-id="" id="D_addCar">加入购物车</a>
                 <a href="#" class="now-pay">立即购买</a>
@@ -88,6 +89,31 @@
 <script src="js/requestAnimationFrame.js"></script>
 <script src="js/common.js"></script>
 <script>
+
+    function addNum() {
+        var price = document.getElementById("initPrice").innerText;
+        var count = document.getElementById("countNumber").value;
+        var countInt = parseInt(count) + 1;
+        var totalPrice = document.getElementById("totalPrice");
+        totalPrice.innerText = "价格：¥ " + price*countInt + " RMB";
+    }
+
+    function cutNum() {
+        var price = document.getElementById("initPrice").innerText;
+        var count = document.getElementById("countNumber").value;
+        if(parseInt(count) == 0){
+
+        }else {
+            var countInt = parseInt(count) - 1;
+            var totalPrice = document.getElementById("totalPrice");
+            if (countInt == 0) {
+                totalPrice.innerText = "价格：¥ " + 0 + " RMB";
+            } else {
+                totalPrice.innerText = "价格：¥" + price * countInt + "RMB";
+            }
+        }
+    }
+
     $(function(){
         init();
 //        初始化页面
@@ -95,26 +121,30 @@
         var num = str.indexOf("?");
         str = str.substr(num+1);
         $.ajax({
-            type:"POST",
-            url:"php/deteil_get.php",
+            type:"GET",
+            url:"/kknq/get/cake",
             data:str,
+            dataType: 'json',
             success:function (response) {
-                if(response[0].sort==06 ||response[0].sort==07){
+                var json = JSON.stringify(response);
+                var product = eval("("+json+")");
+                if(product.type == 6 || product.type == 7){
                     $('.rt-size').html('<a href="#" class="active">1.0磅</a>');
                 }
-                $('.rt-img').attr('src',response[0].pimg);
-                $('.rt-title').text(response[0].ptitle);
-                $('.rt-info').text(response[0].pname);
-                $('.rt-price').text("价格：¥"+response[0].price+"RMB");
-                $('.psmell').text(response[0].psmell);
-                $('.psort').text(response[0].psort);
-                $('.pmaterial').text(response[0].pmaterial);
-                $('.addCar').html(`<a href="#" class="addCar" data-id="${response[0].pid}">加入购物车</a>`);
-                $('.index').html(response[0].ptitle);
+                $('.rt-img').attr('src',product.productImgUrl);
+                $('.rt-title').text(product.productTitle);
+                $('.rt-info').text(product.productName);
+                $('.rt-price').text("价格：¥ "+product.price+" RMB");
+                $('.psmell').text(product.productSmell);
+                $('.psort').text(product.productSort);
+                $('.pmaterial').text(product.productTitle);
+                $('.addCar').html(`<a href="#" class="addCar" data-id="${product.productId}">加入购物车</a>`);
+                $('.index').html(product.productTitle);
+                $('#initPrice').text(product.price);
+
                 //        修改商品详情信息（数据库还需搭建）
             }
         });
-
 
 //尺寸
         $('.rt-size a').click(function (e) {

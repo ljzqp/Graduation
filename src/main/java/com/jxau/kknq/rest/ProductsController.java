@@ -53,10 +53,11 @@ public class ProductsController {
         return productsService.getProductsByKeyWord(keyword,pageNum, pageSize);
     }
 
-    @GetMapping(value = "test/hello")
-    public String test(){
-        return "Hello World!!";
+    @RequestMapping(value = "/get/cake", method = RequestMethod.GET)
+    @ResponseBody
+    public Products getProductById(@RequestParam("pid") int pid )
+    {
+        System.out.println("pid---------"+pid );
+        return productsService.getProductById(pid);
     }
-//    sss
-//    ggg
 }

@@ -15,4 +15,6 @@ public interface ProductsService {
     PageResult<List<Products>> getProductsByType(int type, Integer pageNum, Integer pageSize);
 
     PageResult<List<Products>> getProductsByKeyWord(String keyWord, Integer pageNum, Integer pageSize);
+
+    Products getProductById(int pid);
 }

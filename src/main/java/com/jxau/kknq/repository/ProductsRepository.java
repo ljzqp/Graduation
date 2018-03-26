@@ -25,4 +25,6 @@ public interface ProductsRepository extends PagingAndSortingRepository<Products,
     @Query(value = "FROM Products p WHERE p.type = ?1")
     Page<Products> searchProductsByKeyWord(String keyWord, Pageable pageable);
 
+    Products getProductsByProductId(int pid);
+
 }

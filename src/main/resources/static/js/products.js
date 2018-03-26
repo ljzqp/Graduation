@@ -1,13 +1,17 @@
 
 //动态生成
 $(function () {
+
     var sort=9;
+    var pathName = window.location.pathname.substring(1);
+    var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
     getjson(sort);
     $('#nav dl dd a').click(function(e){
         e.preventDefault();
         var sort=$(this).attr('data-sort');
         $($(this)).addClass('active').parent().siblings().children('a').removeClass('active');
         getjson(sort);
+
     });
     $('#search').click(function(e){
         e.preventDefault();
@@ -18,7 +22,6 @@ $(function () {
     function getjson(sort) {//封装函数动态生成页面
         $.getJSON('/kknq/cakes',{'sort':sort},function(pager){
             var html='';
-
             $.each(pager.data,function(i,p){
                 html+=`
            <div class="good-box" data-id="${p.productId}">
@@ -35,16 +38,19 @@ $(function () {
                     </div>
                 </div>
                 <div class="good-introduce">
-                    <p><a href="deteil.html" data-id="${p.productId}">【${p.productTitle}】</a></p>
-                    <p><a href="deteil.html" data-id="${p.productId}">${p.productName}</a></p>
-                    <p><a href="deteil.html" data-id="${p.productId}">¥${p.price}RMB</a></p>
+                    <p><a href="${webName}/details" data-id="${p.productId}">【${p.productTitle}】</a></p>
+                    <p><a href="${webName}/details" data-id="${p.productId}">${p.productName}</a></p>
+                    <p><a href="${webName}/details" data-id="${p.productId}">¥${p.price}RMB</a></p>
                 </div>
+                
+                <div></div>
             </div>
            `
             });
             $('#sort').html(html);
         });
     }
+
     function search_getjson(keyword) {//封装函数动态生成页面
         $.getJSON('/kknq/keyWord/cakes',{'keyword':keyword},function(pager){
             var html='';
@@ -88,7 +94,7 @@ $(function () {
 //
 $('#sort').on('click','.good-box-top>a,.good-introduce>p>a',function (e) {
     e.preventDefault();
-    window.location.href="deteil.html?pid="+$(this).data('id');
+    window.location.href="/kknq/details?pid="+$(this).data('id');
 //    加入购物车
 
 });

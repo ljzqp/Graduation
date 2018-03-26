@@ -84,6 +84,11 @@ public class ProductsServiceImpl implements ProductsService {
         return PageResult.SuccPageResult(products, page);
     }
 
+    @Override
+    public Products getProductById(int pid) {
+        return productsRepository.getProductsByProductId(pid);
+    }
+
     //根据商品种类的不同构建查询条件
     private Specification<Products> getSpecification(int sortMin, int sortMax) {
         return (root, query, cb) -> {
