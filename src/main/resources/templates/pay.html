@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
@@ -10,6 +10,7 @@
 
 <header id="header"></header>
 <section id="section">
+    <input type="hidden" id="initPrice"/>
     <div id="loc">
         <a href="index.html">首页</a>
         >
@@ -37,34 +38,34 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="#"><img src="images/xin1.jpg" style="width: 100px;height: 100px;"></a></td>
-                        <td><a href="#">STARRY SKY星空</a></td>
+                        <td><a href="#"><img class="rt-img" style="width: 100px;height: 100px;"></a></td>
+                        <td><a href="#" class="rt-title">STARRY SKY星空</a></td>
                         <td>2.0磅 / 10份 标配餐具</td>
-                        <td>￥<span class="pri">308</span>.00 元</td>
-                        <td><div class="rt-sum"><a href="#" class="cut">-</a><input type="text" value="1" class="num1" disabled><a href="#" class="add">+</a></div></td>
+                        <td><span class="pri">308</span></td>
+                        <td><div class="rt-sum"><a href="#" class="cut" onclick="javascript:cutNum()">-</a><input type="text" value="1" class="num1" id="countNumber" disabled><a href="#" onclick="javascript:addNum()" class="add">+</a></div></td>
                         <td><p class="birthTip">无</p><br>
                             <a href="#" class="active birth">选择生日牌</a></td>
-                        <td>￥<span class="price tol1 tol">308.00 </span> 元</td>
+                        <td><div class="" id="totalPrice"></div> </td>
                         <td><a href="#">删除</a></td>
                     </tr>
                     <tr id="isCandle" >
-                        <td><a href="#"><img src="images/xin1.jpg" style="width: 100px;height: 100px;"></a></td>
+                        <td><a href="#"><img th:src="@{images/lazhu.jpg}" style="width: 100px;height: 100px;"></a></td>
                         <td><a href="#">蓝色长条蜡烛</a></td>
                         <td>包</td>
-                        <td>￥<span class="pri">2</span>.00 元</td>
-                        <td><div class="rt-sum"><a href="#" class="cut">-</a><input type="text" value="0" id="num2" disabled><a href="#" class="add">+</a></div></td>
+                        <td><span class="" id="lazhuPrice"></span></td>
+                        <td><div class="rt-sum"><a href="#" class="cut" onclick="javascript:cutlazhuNum()">-</a><input type="text" value="1" id="countlazhuNumber" disabled><a href="#" onclick="javascript:addlazhuNum()" class="add">+</a></div></td>
                         <td></td>
-                        <td>￥<span class="price">0.00 </span>元</td>
+                        <td><span class="laprice" id ="lazhuTotalPrice"></span></td>
                         <td><a href="#">删除</a></td>
                     </tr>
                     <tr id="isAddCook">
-                        <td><a href="#"><img src="images/xin1.jpg" style="width: 100px;height: 100px;"></a></td>
+                        <td><a href="#"><img th:src="@{images/canju.jpg}" style="width: 100px;height: 100px;"></a></td>
                         <td><a href="#">10人份餐具</a></td>
                         <td>份</td>
-                        <td>￥<span class="pri">5</span> .00元</td>
-                        <td><div class="rt-sum"><a href="#" class="cut">-</a><input type="text" value="0" id="num3" disabled><a href="#" class="add">+</a></div></td>
+                        <td><span class="" id="canjuPrice"></span></td>
+                        <td><div class="rt-sum"><a href="#" class="cut" onclick="javascript:cutCanjuNum()">-</a><input type="text" value="1" id="countcanjuNumber" disabled><a href="#" onclick="javascript:addCanjuNum()" class="add">+</a></div></td>
                         <td></td>
-                        <td>￥<span class="price">0.00</span> 元</td>
+                        <td><span class="canprice" id ="canjuTotalPrice"></span> </td>
                         <td><a href="#">删除</a></td>
                     </tr>
                 </tbody>
@@ -144,12 +145,137 @@
 
     </form>
 </section>
-
 <footer id="footer">
 </footer>
-<script src="js/jquery.js"></script>
 <script src="js/laydate.dev.js"></script>
-<script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.fly.min.js"></script>
 <script src="js/pay.js"></script>
+<script src="js/common.js"></script>
+<script>
+
+    function addNum() {
+        var price = parseInt(document.getElementById("initPrice").innerText);
+        var count = document.getElementById("countNumber").value;
+        var countInt = parseInt(count) +1;
+        var totalPrice = document.getElementById("totalPrice");
+        totalPrice.innerHTML = "¥ " + price*countInt;
+    }
+
+    function cutNum() {
+        var price = document.getElementById("initPrice").innerText;
+        var count = document.getElementById("countNumber").value;
+        if(parseInt(count) == 0){
+
+        }else {
+            var countInt = parseInt(count) - 1;
+            var totalPrice = document.getElementById("totalPrice");
+            if (countInt == 0) {
+                totalPrice.innerText = "¥ " + 0;
+            } else {
+                totalPrice.innerText = "¥ " + price * countInt;
+            }
+        }
+    }
+
+//餐具增减动态显示价格
+    function addCanjuNum() {
+        var price = parseInt(document.getElementById("canjuPrice").innerText);
+        var count = document.getElementById("countcanjuNumber").value;
+        var countInt = parseInt(count) +1;
+        var totalPrice = document.getElementById("canjuTotalPrice");
+        totalPrice.innerHTML = "¥ " + price*countInt;
+    }
+
+    function cutCanjuNum() {
+        var price = document.getElementById("canjuPrice").innerText;
+        var count = document.getElementById("countcanjuNumber").value;
+        if(parseInt(count) == 0){
+
+        }else {
+            var countInt = parseInt(count) - 1;
+            var totalPrice = document.getElementById("canjuTotalPrice");
+            if (countInt == 0) {
+                totalPrice.innerText = "¥ " + 0;
+            } else {
+                totalPrice.innerText = "¥ " + price * countInt;
+            }
+        }
+    }
+
+    //蜡烛增减动态显示价格
+    function addlazhuNum() {
+        var price = document.getElementById("lazhuPrice").innerText;
+        var count = document.getElementById("countlazhuNumber").value;
+        var countInt = parseInt(count) +1;
+        var totalPrice = document.getElementById("lazhuTotalPrice");
+        console.log(countInt);
+        totalPrice.innerHTML = "¥ " + price*countInt;
+    }
+
+    function cutlazhuNum() {
+        var price = document.getElementById("lazhuPrice").innerText;
+        var count = document.getElementById("countlazhuNumber").value;
+        if(parseInt(count) == 0){
+
+        }else {
+            var countInt = parseInt(count) - 1;
+            var totalPrice = document.getElementById("lazhuTotalPrice");
+            if (countInt == 0) {
+                totalPrice.innerText = "¥ " + 0;
+            } else {
+                totalPrice.innerText = "¥ " + price * countInt;
+            }
+        }
+    }
+
+
+
+    $(function(){
+        init();
+//        初始化页面
+        var str = location.href; //取得整个地址栏
+        var num = str.indexOf("?");
+        str = str.substr(num+1);
+        var lazhu = 2;
+        var canju = 5;
+        $.ajax({
+               type:"GET",
+               url:"/kknq/buynow/getCakes",
+               data:str,
+               dataType: 'json',
+               success:function (response) {
+                   var json = JSON.stringify(response);
+                   var product = eval("("+json+")");
+                   if(product.type == 6 || product.type == 7){
+                       $('.rt-size').html('<a href="#" class="active">1.0磅</a>');
+                   }
+                   $('.rt-img').attr('src',product.productImgUrl);
+                   $('.rt-title').text(product.productTitle);
+                   $('.pri').text("¥ "+product.price);
+                   $('#totalPrice').text("¥ "+product.price);
+                   $('#initPrice').text(product.price);
+                   $('#lazhuPrice').text(lazhu);
+                   $('.laprice').text("¥ 2");
+                   $('#canjuPrice').text(canju);
+                   $('#canjuTotalPrice').text("¥ 5");
+
+
+//                   $('.psmell').text(product.productSmell);
+//                   $('.psort').text(product.productSort);
+//                   $('.pmaterial').text(product.productTitle);
+//                   $('.addCar').html(`<a href="#" class="addCar" data-id="${product.productId}">加入购物车</a>`);
+//                   $('.index').html(product.productTitle);
+//                   $('#initPrice').text(product.price);
+
+                   //        修改商品详情信息（数据库还需搭建）
+               }
+        });
+    });
+
+</script>
+
+
+
 </body>
 </html>

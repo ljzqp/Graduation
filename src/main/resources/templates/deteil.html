@@ -95,7 +95,7 @@
         var count = document.getElementById("countNumber").value;
         var countInt = parseInt(count) + 1;
         var totalPrice = document.getElementById("totalPrice");
-        totalPrice.innerText = "价格：¥ " + price*countInt + "RMB";
+        totalPrice.innerText = "价格：¥ " + price*countInt + " RMB";
     }
 
     function cutNum() {
@@ -109,7 +109,7 @@
             if (countInt == 0) {
                 totalPrice.innerText = "价格：¥ " + 0 + " RMB";
             } else {
-                totalPrice.innerText = "价格：¥" + price * countInt + "RMB";
+                totalPrice.innerText = "价格：¥ " + price * countInt + " RMB";
             }
         }
     }
@@ -134,7 +134,7 @@
                 $('.rt-img').attr('src',product.productImgUrl);
                 $('.rt-title').text(product.productTitle);
                 $('.rt-info').text(product.productName);
-                $('.rt-price').text("价格：¥"+product.price+"RMB");
+                $('.rt-price').text("价格：¥ "+product.price+" RMB");
                 $('.psmell').text(product.productSmell);
                 $('.psort').text(product.productSort);
                 $('.pmaterial').text(product.productTitle);
@@ -158,7 +158,7 @@
 //        点击立即购买
         $('.now-pay').click(function (e) {
             e.preventDefault();
-            window.location.href="pay.html?"+str;
+            window.location.href="/kknq/buynow?"+str;
         });
 
     });

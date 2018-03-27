@@ -1,6 +1,13 @@
 package com.jxau.kknq.rest;
 
+import com.jxau.kknq.entity.Products;
+import com.jxau.kknq.service.ProductsService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author luowenbin
@@ -10,6 +17,20 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BuyNowController {
 
-//    @PostMapping(value = "/buynow")
+    @Autowired
+    ProductsService productsService;
+
+    @GetMapping(value = "buynow")
+    public String details(){
+        System.out.println("fefefefe+");
+        return "pay";
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/buynow/getCakes")
+    public Products buyNow(@RequestParam("pid") int pid){
+        System.out.println("aaaaa+"+pid);
+        return productsService.getProductById(pid);
+    }
 
 }
