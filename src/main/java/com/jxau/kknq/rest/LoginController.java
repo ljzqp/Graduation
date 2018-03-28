@@ -62,7 +62,6 @@ public class LoginController {
     @RequestMapping(value = "/login/test", method = RequestMethod.GET)
     @ResponseBody
     public Result loginTest(HttpServletRequest request) {
-        System.out.println("------------loginTest-----------");
         String username = request.getParameter("uname");
         String password = request.getParameter("upwd");
         System.out.println("nananan"+username);

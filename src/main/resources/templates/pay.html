@@ -125,9 +125,9 @@
             </div>
 
             <div class="total">
-                <p class="f20 b">商品总计：￥ <span id="total1">0.00</span>RMB</p>
+                <p class="f20 b">商品总计： <span id="allPrice" class="">0.00</span>RMB</p>
             </div>
-            <p class="rt-buy over p"><a href="payCart.html" class="fl" id="back">返回购物车</a> <a href="order.html" class="rt" id="submit">提交订单</a></p>
+            <p class="rt-buy over p"><a class="ffaaaaa" id="back" href="#" >返回详情页</a> <a href="#" class="rt" id="submit">提交订单</a></p>
         </div>
         <!--模态框-->
         <div id="window-city">
@@ -160,6 +160,8 @@
         var countInt = parseInt(count) +1;
         var totalPrice = document.getElementById("totalPrice");
         totalPrice.innerHTML = "¥ " + price*countInt;
+        var allPrice = document.getElementById("allPrice");
+        allPrice.innerHTML = totalPrice.innerText;
     }
 
     function cutNum() {
@@ -259,6 +261,7 @@
                    $('.laprice').text("¥ 2");
                    $('#canjuPrice').text(canju);
                    $('#canjuTotalPrice').text("¥ 5");
+                   $('#allPrice').text("¥ "+product.price);
 
 
 //                   $('.psmell').text(product.productSmell);
@@ -270,6 +273,18 @@
 
                    //        修改商品详情信息（数据库还需搭建）
                }
+        });
+
+        //点击提交订单
+        $('.rt').click(function (e) {
+            e.preventDefault();
+            window.location.href="/kknq/orders?"+str;
+        });
+
+        //点击提交订单
+        $('.ffaaaaa').click(function (e) {
+            e.preventDefault();
+            window.location.href="/kknq/details?"+str;
         });
     });
 
