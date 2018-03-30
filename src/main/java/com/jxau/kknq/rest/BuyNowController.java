@@ -1,10 +1,12 @@
 package com.jxau.kknq.rest;
 
+import com.jxau.kknq.bean.OrderDetails;
 import com.jxau.kknq.entity.Products;
 import com.jxau.kknq.service.ProductsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +30,9 @@ public class BuyNowController {
 
     @ResponseBody
     @GetMapping(value = "/buynow/getCakes")
-    public Products buyNow(@RequestParam("pid") int pid){
+    public Products buyNow(Model model,@RequestParam("pid") int pid){
         System.out.println("aaaaa+"+pid);
+        model.addAttribute("orderDetails",new OrderDetails());
         return productsService.getProductById(pid);
     }
 

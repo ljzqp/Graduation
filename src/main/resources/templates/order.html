@@ -38,13 +38,15 @@
         > <a th:href="@{/order}">我的订单</a>
         >订单详情
     </div>
+    <!--/*@thymesVar id="orderDetails" type="com.jxau.kknq.bean.OrderDetails"*/-->
     <div class="pay-details">
         <h3 class="title">订单详情</h3>
-        <p>蛋糕名称：<span class="name"></span></p>
-        <p>蛋糕详情：<img src="" alt=""></p>
+        <p>蛋糕名称：<span class="name" th:text="${orderDetails.productTitle}"></span></p>
+        <p>蛋糕数量：<img src="" alt=""></p>
         <p>蛋糕价格：<span class="price"></span></p>
-        <p>其它配件：<span class=""></span></p>
         <p>下单时间：<span class=""></span></p>
+        <p>其它配件：<span class=""></span></p>
+        <p>留言说明：<span class=""></span></p>
     </div>
     <div class="pay-details">
         <h3 class="title">配送信息</h3>

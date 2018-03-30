@@ -60,17 +60,17 @@ $('.pay-location').click(function (e) {
     e.preventDefault();
     $('#window-city').css('display','block');
     $('#window-city #city-box .bg').html(
-        `<p>请输入正确的收货地址(现仅限杭州市内）</p>
+        `<p>请输入正确的收货地址(现仅限深圳市内）</p>
                 <p class="sub">
                     <select name="" id="city" class="pl10">
-                        <option value="" selected>杭州市</option>
+                        <option value="" selected>深圳市</option>
                     </select>
                     <select name="" id="qu" class="pl10 ml20">
-                        <option value="" selected>江干区</option>
-                        <option value="">西湖区</option>
-                        <option value="">上城区</option>
-                        <option value="">下城区</option>
-                        <option value="">拱墅区</option>
+                        <option value="" selected>龙岗区</option>
+                        <option value="">宝安区</option>
+                        <option value="">南山区</option>
+                        <option value="">龙华区</option>
+                        <option value="">福田区</option>
                     </select>
                 <p class="sub"><label for="location">详细地址:</label>
                 <input type="text" placeholder="街道、楼牌号等" class="text" maxlength="10" id="location"></p>
@@ -84,6 +84,25 @@ $('.bg').on('click','.confirm',function (e) {
 $('body').on('change','input',function () {
     $('.idcard').prop('checked')? $('#idshow').removeClass('hide'): $('#idshow').addClass('hide');
     $('.inself').prop('checked')? $('.text').removeClass('hide'): $('.text').addClass('hide');
+});
+
+//   输入配送方式
+$('.pay-deliverWay').click(function (e) {
+    e.preventDefault();
+    $('#window-city').css('display','block');
+    $('#window-city #city-box .bg').html(
+        `<p>请选择正确的配送方式</p>
+                <p class="sub">
+                    <select name="" id="way" class="pl10">
+                        <option value="" selected>员工配送</option>
+                        <option value="" selected>到店自提</option>
+                    </select>
+                <p class="sub"><a href="#" type="button" class="ss">确定</a><a href="#" type="button" class="cancel">取消</a></p>`);
+});
+$('.bg').on('click','.ss',function (e) {
+    e.preventDefault();
+    $('#window-city').css('display','none');
+    $('.pay-deliverWay').text($('select#way>option:selected').text());
 });
 
 //选择日期
