@@ -82,11 +82,6 @@ public class Orders {
     @Column(name = "remarks")
     private String remarks;
     /**
-     * 优惠金额
-     */
-    @Column(name = "discount_amount")
-    private Float discountAmount;
-    /**
      * 配送方式
      */
     @Column(name = "deliver_type")
