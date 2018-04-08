@@ -140,8 +140,8 @@ $(function(){
     //登录成功
     function loginSuccess(uname,pwd) {
         $('#login-box').css("display","none");
-        sessionStorage.setItem("loginName",uname);//缓存到本地
-        sessionStorage.setItem("loginPwd",pwd);
+        sessionStorage.setItem("uname",uname);//缓存到本地
+        sessionStorage.setItem("upwd",pwd);
        init();
         //再次点击该超链接的跳转
         

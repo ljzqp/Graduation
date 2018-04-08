@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class OrderDetails {
 
+    private  int userId;
+
     private String productTitle;
 
     private String productNumber;
@@ -35,6 +37,8 @@ public class OrderDetails {
     private String deliverEndTime;
 
     private String payWay;
+
+    private String productId;
 
 
 }

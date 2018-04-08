@@ -1,5 +1,9 @@
 package com.jxau.kknq;
 
+import com.jxau.kknq.entity.OrderItems;
+import com.jxau.kknq.entity.Orders;
+import com.jxau.kknq.repository.OrderItemsRepository;
+import com.jxau.kknq.repository.OrdersRepository;
 import com.jxau.kknq.util.RandomUtil;
 
 import org.junit.Test;
@@ -16,13 +20,24 @@ public class KknqApplicationTests {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    OrdersRepository ordersRepository;
+    @Autowired
+    OrderItemsRepository itemsRepository;
     private static final long INFOLD_FLAG = 1517126919910L;
 
     @Test
     public void contextLoads() {
-        long userId = System.currentTimeMillis() - INFOLD_FLAG;
-//		System.out.println(System.currentTimeMillis()-1234);
-        System.out.println(userId);
+        Orders orders =new Orders();
+        orders.setAddress("sss");
+        orders.setAmount(20.f);
+        ordersRepository.save(orders);
+
+        OrderItems orderItems = new OrderItems();
+        orderItems.setPrice(100.f);
+        orderItems.setOrder(orders);
+        itemsRepository.save(orderItems);
+
     }
 
     /**

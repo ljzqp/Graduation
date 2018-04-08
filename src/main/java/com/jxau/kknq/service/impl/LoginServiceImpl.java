@@ -51,8 +51,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public int loginCheck(String username, String password) {
         Users user;
-        user = userRepository.getUsersByUsername(username, password);
-
+        user = userRepository.getUsersByUsernameAndPassword(username, password);
         if (user != null && user.getStatus() !=1){
             return 1001;
         }

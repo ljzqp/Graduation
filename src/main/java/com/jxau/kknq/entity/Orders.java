@@ -25,7 +25,10 @@ public class Orders {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private int orderId;
+    private int id;
+
+    @Column(name = "user_id")
+    private int userId;
     /**
      * 订单总金额
      */
@@ -37,7 +40,7 @@ public class Orders {
     /**
      * 联系电话
      */
-    @Column(name = "contacttel")
+    @Column(name = "contact_tel")
     private String contactTel;
     /**
      * 状态
@@ -45,6 +48,11 @@ public class Orders {
      * 5-已退货；6-已取消；7-待付款；8-下单成功；9-取消中
      */
     private int status;
+    /**
+     * 商品ID
+     */
+    @Column(name = "product_id")
+    private int productId;
     /**
      * 下单时间
      */
@@ -82,7 +90,7 @@ public class Orders {
     @Column(name = "remarks")
     private String remarks;
     /**
-     * 配送方式
+     * 配送方式 0-到店自提；1-员工配送；
      */
     @Column(name = "deliver_type")
     private Integer deliverType;
@@ -98,20 +106,20 @@ public class Orders {
     @Column(name = "finish_time")
     private Date finishTime;
     /**
+     * 派送起始时间
+     */
+    @Column(name = "start_time")
+    private String deliverStartTime;
+    /**
+     * 派送结束时间
+     */
+    @Column(name = "end_time")
+    private String deliverEndTime;
+    /**
      * 付款时间
      */
     @Column(name = "pay_time")
     private Date payTime;
-    /**
-     * 次日达配送开始时间
-     */
-    @Column(name = "start_time")
-    private String startTime;
-    /**
-     * 次日达配送结束时间
-     */
-    @Column(name = "end_time")
-    private String endTime;
     /**
      * 创建时间
      */

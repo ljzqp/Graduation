@@ -11,7 +11,10 @@ public interface UserRepository extends JpaRepository<Users,Integer> {
     Users getUsersByTelPhoneAndPassword(String tel, String password);
 
     @Query(value = "FROM Users u WHERE u.username = ?1 AND u.password = ?2")
-    Users getUsersByUsername(String username, String password);
+    Users getUsersByUsernameAndPassword(String username, String password);
+
+    @Query(value = "FROM Users u WHERE u.username = ?1")
+    Users getUsersByUsername(String username);
 
     Users getUserByTelPhone(String tel);
     /** 通过邮箱获取对象 */

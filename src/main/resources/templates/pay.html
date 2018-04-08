@@ -116,11 +116,11 @@
                 </ul>
             </div>
             <p class="f18 b p">付款方式</p>
-            <div class="pay_way bg">
-                <input type="radio" name="pay" value="" checked>支付宝
-                <input type="radio" name="pay" value="" class="idcard">银联
-                <input type="radio" name="pay" value="">货到付款（现金）
-                <input type="radio" name="pay" value="">会员资金账户<br>
+            <div class="pay_way bg" id="wrap">
+                <input type="radio" name="pay" value="1" checked>支付宝
+                <input type="radio" name="pay" value="2" class="idcard">银联
+                <input type="radio" name="pay" value="3">货到付款（现金）
+                <input type="radio" name="pay" value="4">会员资金账户<br>
                 <p class="sub hide" id="idshow"><label for="idcard">银行卡号：</label><input type="text" id="idcard" placeholder="请输入正确的银行帐号"></p>
                 <input id="dai" type="checkbox" value="kf" name="">使用代金券
             </div>
@@ -268,17 +268,23 @@
             e.preventDefault();
             if ($("#candle").is(":checked")){
             }
+            var str = location.href; //取得整个地址栏
+            var num = str.indexOf("=");
+            str = str.substr(num+1);
+            alert(str);
             var orderDetails ={
                 "productTitle" : document.getElementById("ptitle").textContent,
                 "productNumber":document.getElementById("countNumber").value,
                 "price":document.getElementById("initPrice").textContent,
                 "contact":document.getElementById("contact").value,
                 "address":document.getElementById("address").textContent,
-                "deliverWay":document.getElementById("address").textContent,
+                "deliverWay":document.getElementById("deliverWay").textContent,
                 "deliverDate":document.getElementById("J-xl").value,
                 "deliverStartTime":$("#deliverStartTime option:selected").text(),
                 "deliverEndTime":$("#deliverEndTime option:selected").text(),
                 "candleNumber" : document.getElementById("countlazhuNumber").value,
+                "payWay":$('#wrap input[name="pay"]:checked ').val(),
+                "productId":str,
             }
             $.ajax({
                type: "POST",

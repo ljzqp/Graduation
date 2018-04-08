@@ -2,9 +2,12 @@ package com.jxau.kknq.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,6 +26,11 @@ public class OrderItems {
     @SequenceGenerator(name = "jlsqSeq", sequenceName = "JLSQ_SEQ", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jlsqSeq")
     private Integer id;
+
+    //映射多对一的关联关系
+    @JoinColumn(name = "order_id") // 关联order表的字段
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Orders order;
     /**
      * 商品 ID
      */

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author luowenbin
@@ -61,11 +62,12 @@ public class LoginController {
 
     @RequestMapping(value = "/login/test", method = RequestMethod.GET)
     @ResponseBody
-    public Result loginTest(HttpServletRequest request) {
+    public Result loginTest(HttpServletRequest request, HttpSession session) {
         String username = request.getParameter("uname");
         String password = request.getParameter("upwd");
         System.out.println("nananan"+username);
         System.out.println("seefefefe"+password);
+        session.setAttribute("username",username);
        int status = loginService.loginCheck(username,password);
         return new Result(status);
     }
