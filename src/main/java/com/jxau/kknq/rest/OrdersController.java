@@ -1,20 +1,19 @@
 package com.jxau.kknq.rest;
 
 import com.jxau.kknq.bean.OrderDetails;
+import com.jxau.kknq.entity.Orders;
 import com.jxau.kknq.service.OrdersService;
 import com.jxau.kknq.service.ProductsService;
-import com.sun.deploy.net.HttpResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -32,19 +31,23 @@ public class OrdersController {
     OrdersService ordersService;
 
     @GetMapping(value = "orders")
-    public String getOrdersPage(@ModelAttribute(value = "orderDetails") OrderDetails orderDetails,HttpServletRequest request, HttpResponse response){
+    public String getOrdersPage(){
         return "order";
     }
 
     @PostMapping(value = "send/order")
     @ResponseBody
-    public OrderDetails sendOrderDetails(@RequestBody OrderDetails orderDetails, Model model,HttpSession session){
+    public int sendOrderDetails(@RequestBody OrderDetails orderDetails, Model model,HttpSession session){
         model.addAttribute("orderDetails",orderDetails);
         String username = (String) session.getAttribute("username");
         System.out.println("DADADADADADADA"+username);
         System.out.println("ssss+++"+orderDetails);
-        int userId = ordersService.submitOrder(username,orderDetails);
-        orderDetails.setUserId(userId);
-        return orderDetails;
+        return ordersService.submitOrder(username,orderDetails);
     }
+
+    @GetMapping(value = "get/orders")
+    public Orders getOrders(@RequestParam("id") int id){
+        return ordersService.getOrdersById(id);
+    }
+
 }

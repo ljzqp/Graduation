@@ -4,7 +4,6 @@ import com.jxau.kknq.entity.OrderItems;
 import com.jxau.kknq.entity.Orders;
 import com.jxau.kknq.repository.OrderItemsRepository;
 import com.jxau.kknq.repository.OrdersRepository;
-import com.jxau.kknq.util.RandomUtil;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -55,7 +56,7 @@ public class KknqApplicationTests {
     }
     @Test
     public void random(){
-        System.out.println(RandomUtil.randomCode());
+        System.out.println(new Date().getTime());
     }
 
 }

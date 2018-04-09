@@ -1,6 +1,7 @@
 package com.jxau.kknq.service;
 
 import com.jxau.kknq.bean.OrderDetails;
+import com.jxau.kknq.entity.Orders;
 
 /**
  * @author luowenbin
@@ -10,4 +11,6 @@ import com.jxau.kknq.bean.OrderDetails;
 public interface OrdersService {
 
     int submitOrder(String username,OrderDetails orderDetails);
+
+    Orders getOrdersById(int id);
 }

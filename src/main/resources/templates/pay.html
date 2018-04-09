@@ -271,7 +271,6 @@
             var str = location.href; //取得整个地址栏
             var num = str.indexOf("=");
             str = str.substr(num+1);
-            alert(str);
             var orderDetails ={
                 "productTitle" : document.getElementById("ptitle").textContent,
                 "productNumber":document.getElementById("countNumber").value,
@@ -294,7 +293,9 @@
                data : JSON.stringify(orderDetails),
                dataType: 'json',
                success: function (response) {
-                   window.location.href="/kknq/orders";
+                   var json = JSON.stringify(response);
+                   var order = eval("("+json+")");
+                   window.location.href="/kknq/orders?id="+order;
                }
             });
         });

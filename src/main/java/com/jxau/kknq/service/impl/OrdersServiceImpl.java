@@ -46,11 +46,20 @@ public class OrdersServiceImpl implements OrdersService{
             orders.setDeliverType(1);
         }
         orders.setOrderTime(new Date());
-        orders.setStatus(7);
+        orders.setStatus(7); // 7-待付款
         orders.setPayAmount(Float.valueOf(orderDetails.getPrice()));
         orders.setProductId(productId);
 
-        ordersRepository.save(orders);
+        int id = ordersRepository.save(orders).getId();
+        System.out.println("IDIDIDIDID+"+id);
         return user.getId();
+    }
+
+    @Override
+    public Orders getOrdersById(int id) {
+
+        Orders orders = ordersRepository.findOne(id);
+
+        return null;
     }
 }
