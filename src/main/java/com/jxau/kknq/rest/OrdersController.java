@@ -46,6 +46,7 @@ public class OrdersController {
     }
 
     @GetMapping(value = "get/orders")
+    @ResponseBody
     public Orders getOrders(@RequestParam("id") int id){
         return ordersService.getOrdersById(id);
     }

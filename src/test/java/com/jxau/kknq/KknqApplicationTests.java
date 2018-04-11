@@ -57,6 +57,8 @@ public class KknqApplicationTests {
     @Test
     public void random(){
         System.out.println(new Date().getTime());
+        System.out.println(new Date().getTime()/1000);
+        System.out.println(new Date().getTime()/1000+8*3600);
     }
 
 }

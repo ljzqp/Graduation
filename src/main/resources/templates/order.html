@@ -41,8 +41,8 @@
     <!--/*@thymesVar id="orderDetails" type="com.jxau.kknq.bean.OrderDetails"*/-->
     <div class="pay-details">
         <h3 class="title">订单详情</h3>
-        <p>蛋糕名称：<span class="name" th:text="${orderDetails.productTitle}"></span></p>
-        <p>蛋糕数量：<img src="" alt=""></p>
+        <p>蛋糕名称：<span class="name" ></span></p>
+        <p>蛋糕数量：<span class="cakeNumber" ></span></p>
         <p>蛋糕价格：<span class="price"></span></p>
         <p>下单时间：<span class=""></span></p>
         <p>其它配件：<span class=""></span></p>
@@ -76,8 +76,8 @@
 
 <footer id="footer">
 </footer>
-<script th:href="@{/js/jquery.js}"></script>
-<script th:href="@{/js/common.js}"></script>
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
 <script>
 
     $(function(){
@@ -88,18 +88,14 @@
         str = str.substr(num+1);
         $.ajax({
                type:"GET",
-               url:"/kknq/get/cake",
+               url:"/kknq/get/orders",
                data:str,
                dataType: 'json',
                success:function (response) {
                    var json = JSON.stringify(response);
-                   var product = eval("("+json+")");
-                   if(product.type == 6 || product.type == 7){
-                       $('.rt-size').html('<a href="#" class="active">1.0磅</a>');
-                   }
-                   $('.rt-img').attr('src',product.productImgUrl);
-                   $('.rt-title').text(product.productTitle);
-                   $('.rt-info').text(product.productName);
+                   var order = eval("("+json+")");
+                   $('.name').text(order.productTitle);
+                   $('.cakeNumber').text(order.);
                    $('.rt-price').text("价格：¥ "+product.price+" RMB");
                    $('.psmell').text(product.productSmell);
                    $('.psort').text(product.productSort);

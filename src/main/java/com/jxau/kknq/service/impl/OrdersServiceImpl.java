@@ -58,8 +58,8 @@ public class OrdersServiceImpl implements OrdersService{
     @Override
     public Orders getOrdersById(int id) {
 
-        Orders orders = ordersRepository.findOne(id);
-
-        return null;
+//        Orders orders = ordersRepository.findOne(id);
+        System.out.println("fkafjin");
+        return ordersRepository.findOne(id);
     }
 }
