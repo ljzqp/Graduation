@@ -39,6 +39,7 @@ public class OrdersServiceImpl implements OrdersService{
         orders.setDeliverEndTime(orderDetails.getDeliverEndTime());
         orders.setContact(username);
         orders.setCreateTime(new Date());
+        orders.setProductNumber(Integer.valueOf(orderDetails.getProductNumber()));
         if("到店自提".equals(orderDetails.getDeliverWay())){
             orders.setDeliverType(0);
         }

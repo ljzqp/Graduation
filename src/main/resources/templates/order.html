@@ -44,21 +44,21 @@
         <p>蛋糕名称：<span class="name" ></span></p>
         <p>蛋糕数量：<span class="cakeNumber" ></span></p>
         <p>蛋糕价格：<span class="price"></span></p>
-        <p>下单时间：<span class=""></span></p>
-        <p>其它配件：<span class=""></span></p>
-        <p>留言说明：<span class=""></span></p>
+        <p>下单时间：<span class="orderTime"></span></p>
+        <p>其它配件：<span class="others"></span>无</p>
+        <p>留言说明：<span class="">无</span></p>
     </div>
     <div class="pay-details">
         <h3 class="title">配送信息</h3>
-        <p>订购人姓名：<span class="uname"></span></p>
-        <p>联系方式：<img src="" alt=""></p>
-        <p>配送地址：<span class=""></span></p>
-        <p>配送方式：<span class=""></span></p>
-        <p>配送时间：<span class=""></span></p>
+        <p>订购人姓名：<span class="orderName"></span></p>
+        <p>联系方式：<span class="contact"></span></p>
+        <p>配送地址：<span class="address"></span></p>
+        <p>配送方式：<span class="deliverType"></span></p>
+        <p>配送时间：<span class="deliverTime"></span></p>
     </div>
     <div class="pay-details">
         <h3 class="title">支付详情</h3>
-        <p>支付方式：<span class="name">支付宝</span><a href="#" class="active">更换支付方式</a></p>
+        <p>支付方式：<span class="payWay">支付宝</span><a href="#" class="active">更换支付方式</a></p>
         <p>支付情况：<a href="#" class="err">未支付</a><span class="f12 alert"><b>30</b>分钟内未支付，将被取消订单</span></p>
     </div>
     <div style="margin: 10px 0" class="over pay-details">
@@ -95,14 +95,13 @@
                    var json = JSON.stringify(response);
                    var order = eval("("+json+")");
                    $('.name').text(order.productTitle);
-                   $('.cakeNumber').text(order.);
-                   $('.rt-price').text("价格：¥ "+product.price+" RMB");
-                   $('.psmell').text(product.productSmell);
-                   $('.psort').text(product.productSort);
-                   $('.pmaterial').text(product.productTitle);
-                   $('.addCar').html(`<a href="#" class="addCar" data-id="${product.productId}">加入购物车</a>`);
-                   $('.index').html(product.productTitle);
-                   $('#initPrice').text(product.price);
+                   $('.cakeNumber').text(order.productNumber);
+                   $('.price').text("价格：¥ "+order.price+" RMB");
+                   $('.orderTime').text(order.orderTime);
+                   $('.orderName').text(order.contact);
+                   $('.contact').text(order.contactTel);
+                   $('.address').text(order.address);
+                   $('.address').text(order.address);
 
                    //        修改商品详情信息（数据库还需搭建）
                }

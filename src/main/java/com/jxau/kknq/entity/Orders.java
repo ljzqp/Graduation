@@ -54,6 +54,11 @@ public class Orders {
     @Column(name = "product_id")
     private int productId;
     /**
+     * 订单商品数量
+     */
+    @Column(name = "product_number")
+    private int productNumber;
+    /**
      * 下单时间
      */
     @Temporal(TemporalType.TIMESTAMP)
