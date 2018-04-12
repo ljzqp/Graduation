@@ -41,7 +41,7 @@
     <!--/*@thymesVar id="orderDetails" type="com.jxau.kknq.bean.OrderDetails"*/-->
     <div class="pay-details">
         <h3 class="title">订单详情</h3>
-        <p>蛋糕名称：<span class="name" ></span></p>
+        <p>蛋糕名称：<span class="productName" ></span></p>
         <p>蛋糕数量：<span class="cakeNumber" ></span></p>
         <p>蛋糕价格：<span class="price"></span></p>
         <p>下单时间：<span class="orderTime"></span></p>
@@ -94,14 +94,21 @@
                success:function (response) {
                    var json = JSON.stringify(response);
                    var order = eval("("+json+")");
-                   $('.name').text(order.productTitle);
+                   var deliverTypea;
+                   if(order.deliverType == 0){
+                       deliverTypea = "到店自提"
+                   }else {
+                       deliverTypea = "员工配送"
+                   }
+                   $('.productName').text(order.productTitle);
                    $('.cakeNumber').text(order.productNumber);
-                   $('.price').text("价格：¥ "+order.price+" RMB");
+                   $('.price').text("¥ "+order.amount+" RMB");
                    $('.orderTime').text(order.orderTime);
                    $('.orderName').text(order.contact);
                    $('.contact').text(order.contactTel);
                    $('.address').text(order.address);
-                   $('.address').text(order.address);
+                   $('.deliverType').text(order.deliverType);
+                   $('.deliverTime').text(order.deliverTime+"  "+order.deliverStartTime+"--"+order.deliverEndTime);
 
                    //        修改商品详情信息（数据库还需搭建）
                }
@@ -125,7 +132,7 @@
     $('.bg').on('click','#C_confirm',function (e) {
         e.preventDefault();
         $('#window-city').css('display','none');
-        window.location.href = "pay_null.html";
+        window.location.href = "/kknq/pay/payNull";
     });
 </script>
 </body>

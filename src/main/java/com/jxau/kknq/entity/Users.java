@@ -59,6 +59,12 @@ public class Users {
     @Value("0")
     private int status;
 
+    /**
+     * 用户真实姓名
+     * */
+    @Column(name = "real_name")
+    private int realName;
+
     @Column(name="sex")
     private String sex;
 
@@ -76,5 +82,14 @@ public class Users {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_time")
     private Date updateTime;
+
+    @Column(name = "QQ")
+    private String QQNumber;
+
+    @Column(name = "weiChat")
+    private String weiChat;
+
+    @Column(name = "weibo")
+    private String weiBo;
 
 }

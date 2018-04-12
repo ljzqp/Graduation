@@ -38,6 +38,10 @@ public class Orders {
      */
     private String contact;
     /**
+     * 蛋糕标题
+     */
+    private String productTitle;
+    /**
      * 联系电话
      */
     @Column(name = "contact_tel")
@@ -61,9 +65,8 @@ public class Orders {
     /**
      * 下单时间
      */
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ordertime")
-    private Date orderTime;
+    private String orderTime;
     /**
      * 送货地址
      */
@@ -81,9 +84,8 @@ public class Orders {
     /**
      * 配送时间
      */
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deliver_time")
-    private Date deliverTime;
+    private String deliverTime;
     /**
      * 使用优惠券金额
      */

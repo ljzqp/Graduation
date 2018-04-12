@@ -34,11 +34,12 @@ public class OrdersServiceImpl implements OrdersService{
         orders.setAmount(Float.valueOf(orderDetails.getPrice()));
         orders.setBuyWay(Integer.valueOf(orderDetails.getPayWay()));
         orders.setContactTel(orderDetails.getContact());
-        orders.setDeliverTime(DateUtils.parse(orderDetails.getDeliverDate(),DateUtils.UI_FORMAT));
+        orders.setDeliverTime(orderDetails.getDeliverDate());
         orders.setDeliverStartTime(orderDetails.getDeliverStartTime());
         orders.setDeliverEndTime(orderDetails.getDeliverEndTime());
         orders.setContact(username);
         orders.setCreateTime(new Date());
+        orders.setProductTitle(orderDetails.getProductTitle());
         orders.setProductNumber(Integer.valueOf(orderDetails.getProductNumber()));
         if("到店自提".equals(orderDetails.getDeliverWay())){
             orders.setDeliverType(0);
@@ -46,20 +47,18 @@ public class OrdersServiceImpl implements OrdersService{
         else if ("员工配送".equals(orderDetails.getDeliverWay())){
             orders.setDeliverType(1);
         }
-        orders.setOrderTime(new Date());
+        orders.setOrderTime(DateUtils.format(new Date(),DateUtils.EL_FORMAT));
         orders.setStatus(7); // 7-待付款
         orders.setPayAmount(Float.valueOf(orderDetails.getPrice()));
         orders.setProductId(productId);
 
         int id = ordersRepository.save(orders).getId();
         System.out.println("IDIDIDIDID+"+id);
-        return user.getId();
+        return id;
     }
 
     @Override
     public Orders getOrdersById(int id) {
-
-//        Orders orders = ordersRepository.findOne(id);
         System.out.println("fkafjin");
         return ordersRepository.findOne(id);
     }

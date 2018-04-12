@@ -1,7 +1,15 @@
 package com.jxau.kknq.rest;
 
+import com.jxau.kknq.entity.Orders;
+import com.jxau.kknq.util.Result;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author luowenbin
@@ -90,5 +98,17 @@ public class CenterController {
     public String getVipUpload() {
         return "upload";
     }
+
+
+
+    @GetMapping(value = "/modify/userfile")
+    @ResponseBody
+    public Result modifyMyFile(@RequestBody Orders orders, Model model, HttpSession session){
+        System.out.println("modifyMyFile");
+        String username = (String) session.getAttribute("username");
+        return null;
+
+    }
+
 
 }
