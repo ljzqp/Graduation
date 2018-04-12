@@ -16,4 +16,10 @@ public class PayController {
         return "pay_null";
     }
 
+    @GetMapping(value = "now/saoma")
+    public String getSaoma(){
+        System.out.println("saoma");
+        return "saoma";
+    }
+
 }
