@@ -109,11 +109,10 @@
             var num = str.indexOf("=");
             str = str.substr(num+1);
             var username=
-            var user ={
+            var users ={
                 "realName" : document.getElementById("realName").textContent,
                 "birthday":document.getElementById("realBirthday").value,
                 "telPhone":document.getElementById("contactNumber").textContent,
-                "contact":document.getElementById("contact").value,
                 "address":document.getElementById("address").textContent,
                 "email":document.getElementById("email").textContent,
                 "QQNumber":document.getElementById("QQ").textContent,
@@ -125,7 +124,7 @@
                        url: "/kknq/modify/userfile",
                        async : true,
                        contentType : "application/json",
-                       data : JSON.stringify(user),
+                       data : JSON.stringify(users),
                        dataType: 'json',
                        success: function (response) {
                            var json = JSON.stringify(response);

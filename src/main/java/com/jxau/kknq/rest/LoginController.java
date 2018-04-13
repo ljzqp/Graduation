@@ -60,6 +60,7 @@ public class LoginController {
     }
 
 
+    //登陆接口
     @RequestMapping(value = "/login/test", method = RequestMethod.GET)
     @ResponseBody
     public Result loginTest(HttpServletRequest request, HttpSession session) {

@@ -72,23 +72,23 @@
                     <ul class="pwd">
                         <li>
                             <label >用 户 名：</label>
-                            <b>钟秋萍</b>
+                            <b th:text="${#httpSession.getAttribute('username')}"></b>
                         </li>
                         <li>
                             <label >原始密码：</label>
-                            <input type="password" name="" value="">
+                            <input type="password" name="" value="" id="oldPwd">
                         </li>
                         <li>
                             <label >新 密 码：</label>
-                            <input type="password" name="" value="">
+                            <input type="password" name="" value="" id="newPwd">
                         </li>
                         <li>
                             <label >确认密码：</label>
-                            <input type="password" name="" value="">
+                            <input type="password" name="" value="" id="surePwd">
                         </li>
                         <li class="last-btn">
                             <label ></label>
-                            <a type="submit" href="#">提交</a>
+                            <a type="submit" href="#" class="pwd1">提交</a>
                         </li>
                     </ul>
                 </form>
@@ -99,10 +99,51 @@
 
 <footer id="footer">
 </footer>
-<script th:href="@{/js/jquery.js}"></script>
-<script th:href="@{/js/common.js}"></script>
-<script>
+<!--<script type="text/javascript" th:src="@{http://localhost:8080//kknq/static/js/jquery.js}"></script>-->
 
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+
+<script>
+    $(function(){
+
+        //点击提交修改密码
+        $('.pwd1').click(function (e) {
+            e.preventDefault();
+            var usersDetails ={
+                "oldPassword" : document.getElementById("oldPwd").value,
+                "newPassword":document.getElementById("newPwd").value,
+                "surePassword":document.getElementById("surePwd").value,
+            }
+            if (usersDetails.newPassword != usersDetails.surePassword){
+                alert("新密码与确认密码不一致！")
+                return;
+            }
+            $.ajax({
+                       type: "POST",
+                       url: "/kknq/modify/pwd",
+                       async : true,
+                       contentType : "application/json",
+                       data : JSON.stringify(usersDetails),
+                       dataType: 'json',
+                       success: function (response) {
+                           var json = JSON.stringify(response);
+                           var result = eval("("+json+")");
+                           if(result.code == 100){
+                               alert("密码修改成功！")
+                           }else {
+                               alert("原始密码错误！")
+                           }
+                       }
+                   });
+        });
+
+        //点击返回上一页
+        $('.ffaaaaa').click(function (e) {
+            e.preventDefault();
+            window.location.href="/kknq/details?"+str;
+        });
+    });
 
 </script>
 </body>

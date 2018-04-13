@@ -16,6 +16,12 @@ public class PayController {
         return "pay_null";
     }
 
+    @GetMapping(value = "paySucc")
+    public String paySuc(){
+        return "suc";
+    }
+
+
     @GetMapping(value = "now/saoma")
     public String getSaoma(){
         System.out.println("saoma");

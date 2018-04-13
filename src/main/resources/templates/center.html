@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>YummyCake定制属于您的专属蛋糕</title>
@@ -40,7 +40,7 @@
                 <p class="f16 rt-buy"><span id="P_name"></span>您好！欢迎加入Yummy cake蛋糕商城</p>
                 <div class="lf person-left">
                     <div class="p-bg person-p">
-                        <h3 class="rt-buy">姓名：<span id="P_uname"></span></h3>
+                        <h3 class="rt-buy">姓名：<span th:text="${#httpSession.getAttribute('username')}"></span></h3>
                         <p>电话：<span id="P_phone">2123253212</span></p>
                         <p>生日：未填写</p>
                         <p class="over"><a href="centerPerson.html" class="rt  alert">编辑个人资料>></a></p>
@@ -59,8 +59,8 @@
                 <div class="p-bg person-right lf">
                     <p class="f16 b">用户提醒：</p>
                     <p class="f16 mt10">我的订单</p>
-                    <p class="pl10">订单总数：<span id="D_num">5</span></p>
-                    <p class="pl10">待付款订单：<span id="W_num">2</span></p>
+                    <p class="pl10">订单总数：<span id="D_num">2</span></p>
+                    <p class="pl10">待付款订单：<span id="W_num">0</span></p>
                     <p class="over"><a href="centerOrder.html" class="alert rt">查看详情>></a></p>
                 </div>
             </div>

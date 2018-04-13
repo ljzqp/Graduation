@@ -58,7 +58,7 @@
     </div>
     <div class="pay-details">
         <h3 class="title">支付详情</h3>
-        <p>支付方式：<span class="payWay">支付宝</span><a href="#" class="active">更换支付方式</a></p>
+        <p>支付方式：<span class="payWay">微信</span><a href="#" class="active">更换支付方式</a></p>
         <p>支付情况：<a href="#" class="err">未支付</a><span class="f12 alert"><b>30</b>分钟内未支付，将被取消订单</span></p>
     </div>
     <div style="margin: 10px 0" class="over pay-details">
@@ -120,9 +120,20 @@
         e.preventDefault();
         $('#window-city').css('display','block');
         $('#window-city #city-box .bg').html(
-                `<div class="over" ><p class="f18 p4">您真的忍心取消订单吗？</p>
+            `<div class="over" ><p class="f18 p4">您真的忍心取消订单吗？</p>
                 <p><a href="#" id="C_confirm" class="btn rt btn-warning" style="width: 100px;">确定</a><a href="#" id="C_cancel" class="btn rt" style="width: 100px;">取消</a></p></div>
 `);
+    });
+
+    $('#N_pay').click(function (e) {
+        e.preventDefault();
+        $('#window-city').css('display','none');
+        if(confirm("将使用账户余额支付，确定吗？")){
+            window.location.href = "/kknq/paySucc";
+        }
+        else{
+            return;
+        }
     });
 
     $('.bg').on('click','#C_cancel',function (e) {

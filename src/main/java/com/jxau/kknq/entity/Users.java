@@ -58,12 +58,14 @@ public class Users {
     @Column(name = "status")
     @Value("0")
     private int status;
-
     /**
      * 用户真实姓名
      * */
     @Column(name = "real_name")
-    private int realName;
+    private String realName;
+
+    @Column(name = "balance")
+    private Double balance = 1000.0;
 
     @Column(name="sex")
     private String sex;
